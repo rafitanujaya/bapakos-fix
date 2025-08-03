@@ -221,3 +221,40 @@
     -fx-alignment: center-left;
 }
 .facility-item .label { -fx-font-size: 13px; -fx-text-fill: #334155; }
+
+.kos-detail-nama {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+.kos-detail-harga {
+    -fx-text-fill: green;
+    -fx-font-size: 16px;
+}
+
+.kos-detail-alamat {
+    -fx-text-fill: gray;
+}
+
+.kos-detail-subheader {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.kos-detail-deskripsi {
+    -fx-text-fill: black;
+    -fx-wrap-text: true;
+}
+
+.kos-detail-button {
+    -fx-background-color: #3b82f6;
+    -fx-text-fill: white;
+    -fx-padding: 10 0 10 0;
+    -fx-font-size: 14px;
+}
+
+.no-border-scroll-pane {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+}
+

@@ -6,13 +6,18 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.bapakos.manager.ServiceManager;
 import org.bapakos.manager.ViewManager; // Pastikan import ini benar
+import org.bapakos.model.entity.KostEntity;
+import org.bapakos.service.KostService;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -28,13 +33,20 @@ public class UserMainController {
     private Button notificationButton;
     @FXML
     private Button logoutButton;
+    @FXML
+    private TextField searchField;
+    @FXML
+    private Button refreshButton;
 
     private ViewManager viewManager;
     private ServiceManager serviceManager;
-
+    private UserDashboardController userDashboardController;
+    private KostService kostService;
 
     public void setViewManager(ViewManager viewManager) { this.viewManager = viewManager; }
     public void setServiceManager(ServiceManager serviceManager) { this.serviceManager = serviceManager; }
+    public void setKostService(KostService kostService) { this.kostService = kostService; }
+    public void setUserDashboardController(UserDashboardController controller) { this.userDashboardController = controller; }
 
     @FXML
     public void initialize() {
@@ -72,6 +84,8 @@ public class UserMainController {
                  c.setViewManager(viewManager);
                  c.setServiceManager(serviceManager);
                  c.initAfterInject(serviceManager);
+
+                 this.userDashboardController = c;
              }
 
             rootPane.setCenter(page);
@@ -107,5 +121,29 @@ public class UserMainController {
             System.err.println("Gagal kembali ke halaman login.");
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void onSearchButtonClick() {
+        String keyword = searchField.getText().trim();
+
+        try {
+            List<KostEntity> results = keyword.isEmpty()
+                    ? serviceManager.getKostService().findAll()
+                    : serviceManager.getKostService().findByKeyword(keyword);
+
+            if (userDashboardController != null) {
+                userDashboardController.showKostCards(results);
+            } else {
+                System.out.println("UserDashboardController belum dimuat");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void onRefreshButtonClick() {
+        userDashboardController.loadPage();
     }
 }

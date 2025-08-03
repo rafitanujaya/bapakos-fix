@@ -15,7 +15,11 @@
 <?import javafx.scene.layout.VBox?>
 
 <!-- Root element BorderPane dengan ukuran 1220x720 -->
-<BorderPane fx:id="rootPane" prefHeight="720.0" prefWidth="1220.0" styleClass="user-dashboard-root" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.bapakos.controller.user.UserMainController">
+<BorderPane fx:id="rootPane" prefHeight="720.0" prefWidth="1220.0"
+            styleClass="user-dashboard-root"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.bapakos.controller.user.UserMainController">
 
     <!-- ====================================================================== -->
     <!-- TOP BAR (Bagian Atas)                                                  -->
@@ -75,7 +79,7 @@
             <!-- Kolom Pencarian -->
             <HBox alignment="CENTER_LEFT">
                 <TextField fx:id="searchField" promptText="Cari Nama Kos..." styleClass="search-field" HBox.hgrow="ALWAYS" />
-                <Button fx:id="searchButton" styleClass="create-button" mnemonicParsing="false">
+                <Button fx:id="searchButton" styleClass="create-button" mnemonicParsing="false" onAction="#onSearchButtonClick">
                     <graphic>
                         <ImageView fitHeight="16.0" fitWidth="16.0">
                             <Image url="@/image/search-icon-white.png" />
@@ -99,7 +103,7 @@
                 <TextField fx:id="maxHargaField" promptText="Maksimum" />
             </VBox>
             <Button fx:id="filterSearchButton" text="Cari" styleClass="filter-search-button" maxWidth="1.7976931348623157E308" />
-            <Button fx:id="refreshButton" text="Refresh" styleClass="refresh-button" maxWidth="1.7976931348623157E308" />
+            <Button fx:id="refreshButton" text="Refresh" styleClass="refresh-button" maxWidth="1.7976931348623157E308" onAction="#onRefreshButtonClick"/>
 
             <Separator />
 

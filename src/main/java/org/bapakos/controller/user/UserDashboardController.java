@@ -1,10 +1,13 @@
 package org.bapakos.controller.user;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Separator;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -13,12 +16,15 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import org.bapakos.manager.ServiceManager;
 import org.bapakos.manager.ViewManager;
 import org.bapakos.model.entity.KostEntity;
 import org.bapakos.service.KostService;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.text.NumberFormat;
 import java.util.List;
@@ -31,6 +37,7 @@ public class UserDashboardController {
     private ServiceManager serviceManager;
     private KostService kostService;
     private UserMainController mainController;
+
 
     public void setMainController(UserMainController mainController) { this.mainController = mainController; }
     public void setViewManager(ViewManager viewManager) { this.viewManager = viewManager; }
@@ -57,8 +64,26 @@ public class UserDashboardController {
             for (KostEntity kos : daftarKos) {
                 Node card = createKosCard(kos);
                 kosListContainer.getChildren().add(card);
-            }
+                card.setOnMouseClicked(event -> {
+                    try {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/detail-panel-popup.fxml"));
+                        ScrollPane popupContent = loader.load();
 
+                        DetailPopupController controller = loader.getController();
+                        controller.setKos(kos); // isi data detail
+
+                        // Tampilkan di dalam dialog atau popup window
+                        Stage popupStage = new Stage();
+                        popupStage.setTitle("Detail Kos");
+                        popupStage.setScene(new Scene(popupContent));
+                        popupStage.initModality(Modality.APPLICATION_MODAL);
+                        popupStage.showAndWait();
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                });
+            }
         } catch (SQLException e) {
             e.printStackTrace(); // Atau tampilkan alert jika perlu
         }
@@ -126,6 +151,14 @@ public class UserDashboardController {
 
         card.getChildren().addAll(imageView, wrapper);
         return card;
+    }
+
+    public void showKostCards(List<KostEntity> kostList) {
+        kosListContainer.getChildren().clear();
+        for (KostEntity kos : kostList) {
+            Node card = createKosCard(kos);
+            kosListContainer.getChildren().add(card);
+        }
     }
 
 
