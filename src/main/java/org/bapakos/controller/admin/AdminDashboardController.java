@@ -128,10 +128,7 @@ public class AdminDashboardController {
                 Button editBtn = new Button("Edit");
                 editBtn.getStyleClass().add("button-edit");
                 editBtn.setPrefWidth(60);
-                editBtn.setOnAction(e -> {
-
-                    System.out.println("Edit: " + kost.getId());
-                });
+                editBtn.setOnAction(e -> {handleEdit();});
 
                 // Tombol Hapus
                 Button hapusBtn = new Button("Hapus");

@@ -47,6 +47,7 @@ public class AdminCreateKostController {
     // Tambahkan referensi ke MainController
     private AdminMainController mainController;
     private ViewManager viewManager;
+    private KostEntity currentEditingKost;
 
     public void setMainController(AdminMainController mainController) {
         this.mainController = mainController;
@@ -239,5 +240,26 @@ public class AdminCreateKostController {
         }
     }
 
+//    public void setEditMode(KostEntity kost) {
+//        this.currentEditingKost = kost;
+//
+//        // Isi field
+//        nameField.setText(kost.getName());
+//
+//        priceField.setText(String.valueOf(kost.getPrice()));
+//        descriptionField.setText(kost.getDescription());
+//
+//        // Jika image BLOB atau path, sesuaikan
+//        this.imageBlob = kost.getImage();
+//
+//        // Jika ada fasilitas, load juga
+//        // fasilitasCheckbox.setSelected(...);
+//
+//        // Ubah tombol jadi "Update"
+//        simpanButton.setText("Update");
+//
+//        // Atur flag internal agar simpanButton akan memanggil update
+//        this.editMode = true;
+//    }
 
 }

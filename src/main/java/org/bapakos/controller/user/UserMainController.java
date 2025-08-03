@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import org.bapakos.manager.ServiceManager;
 import org.bapakos.manager.ViewManager; // Pastikan import ini benar
 
 import java.io.IOException;
@@ -28,26 +29,22 @@ public class UserMainController {
     @FXML
     private Button logoutButton;
 
-    // Anda bisa menambahkan @FXML untuk komponen filter jika diperlukan
-    // @FXML private TextField searchField;
-    // @FXML private ComboBox<String> provinsiComboBox;
-
     private ViewManager viewManager;
+    private ServiceManager serviceManager;
 
-    // Metode ini digunakan untuk menerima ViewManager dari LoginController/Main
-    public void setViewManager(ViewManager viewManager) {
-        this.viewManager = viewManager;
-    }
+
+    public void setViewManager(ViewManager viewManager) { this.viewManager = viewManager; }
+    public void setServiceManager(ServiceManager serviceManager) { this.serviceManager = serviceManager; }
 
     @FXML
     public void initialize() {
-        // Muat halaman dashboard sebagai tampilan awal
-        loadPage("user-dashboard.fxml");
-
         // Atur aksi untuk tombol-tombol utama
         homeButton.setOnAction(event -> loadPage("user-dashboard.fxml"));
-        // paymentButton.setOnAction(event -> loadPage("user-payment.fxml")); // Contoh untuk halaman lain
         logoutButton.setOnAction(event -> handleLogout());
+    }
+
+    public void initAfterInject() {
+        loadPage("user-dashboard.fxml");
     }
 
     /**
@@ -68,12 +65,14 @@ public class UserMainController {
             FXMLLoader loader = new FXMLLoader(resourceUrl);
             Parent page = loader.load();
 
-            // Penting: Jika halaman konten perlu berkomunikasi balik,
-            // Anda bisa memberikan referensi controller ini kepadanya.
-            // Object loadedController = loader.getController();
-            // if (loadedController instanceof UserDashboardController) {
-            //     ((UserDashboardController) loadedController).setMainController(this);
-            // }
+
+             Object loadedController = loader.getController();
+             if (loadedController instanceof UserDashboardController c) {
+                 c.setMainController(this);
+                 c.setViewManager(viewManager);
+                 c.setServiceManager(serviceManager);
+                 c.initAfterInject(serviceManager);
+             }
 
             rootPane.setCenter(page);
 

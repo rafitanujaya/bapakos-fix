@@ -59,7 +59,7 @@ public class AdminMainController {
     }
 
     public void initAfterInject() {
-        loadPage("admin-dashboard.fxml"); // ✅ ini dijamin setelah setter dipanggil
+        loadPage("admin-dashboard.fxml");
     }
 
 

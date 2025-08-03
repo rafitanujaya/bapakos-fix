@@ -8,7 +8,12 @@
   Root layout adalah ScrollPane yang membungkus FlowPane.
   FlowPane akan secara otomatis mengatur kartu-kartu kos.
 -->
-<ScrollPane fx:id="scrollPane" styleClass="no-border-scroll-pane" fitToWidth="true" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<ScrollPane fx:id="scrollPane"
+            styleClass="no-border-scroll-pane"
+            fitToWidth="true"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.bapakos.controller.user.UserDashboardController">
     <padding>
         <Insets top="15" right="15" bottom="15" left="15" />
     </padding>

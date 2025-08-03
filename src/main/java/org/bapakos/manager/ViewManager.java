@@ -79,6 +79,9 @@ public class ViewManager {
 
             UserMainController controller = loader.getController();
             controller.setViewManager(this);
+            controller.setServiceManager(serviceManager);
+            controller.initAfterInject();
+
             Scene scene = new Scene(root);
             scene.getStylesheets().add(getClass().getResource("/style/user.css").toExternalForm());
             primaryStage.setScene(scene);

@@ -7,10 +7,6 @@ public class AdminTransactionController {
     private ViewManager viewManager;
     private ServiceManager serviceManager;
 
-    public void setViewManager(ViewManager viewManager) {
-        this.viewManager = viewManager;
-    }
-    public void setServiceManager(ServiceManager serviceManager) {
-        this.serviceManager = serviceManager;
-    }
+    public void setViewManager(ViewManager viewManager) { this.viewManager = viewManager; }
+    public void setServiceManager(ServiceManager serviceManager) { this.serviceManager = serviceManager; }
 }
