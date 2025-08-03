@@ -16,6 +16,6 @@ public interface KostDao {
     public KostEntity findById(String id) throws SQLException;
     public List<KostEntity> findAll() throws SQLException;
     public List<KostEntity> findAllByOwnerId(String ownerId) throws SQLException;
-    public List<KostEntity> findByOwnerIdAndKeyword(String role) throws SQLException;
+    public List<KostEntity> findByOwnerIdAndKeyword(String ownerId, String keyword) throws SQLException;
     public List<KostEntity> findByKeyword(String keyword) throws SQLException;
 }
