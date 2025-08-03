@@ -10,4 +10,10 @@ import java.util.List;
 public interface KostService {
     public Response create(CreateKostDto kost) throws SQLException;
     public List<KostEntity> findAllByOwnerId(String ownerId) throws SQLException;
+    public Response updateById(KostEntity kost) throws SQLException;
+    public Response deleteById(String id) throws SQLException;
+    public KostEntity findById(String id) throws SQLException;
+    public List<KostEntity> findAll() throws SQLException;
+    public List<KostEntity> findByOwnerIdAndKeyword(String ownerId, String keyword) throws SQLException;
+    public List<KostEntity> findByKeyword(String keyword) throws SQLException;
 }

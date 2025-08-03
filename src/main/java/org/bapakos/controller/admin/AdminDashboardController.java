@@ -75,5 +75,4 @@ public class AdminDashboardController {
         rowsContainer.getChildren().add(placeholder);
     }
 
-    private VBox createRecordKost(int i, String name, String )
 }

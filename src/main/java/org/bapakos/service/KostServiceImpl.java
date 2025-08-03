@@ -40,4 +40,55 @@ public class KostServiceImpl implements KostService {
     public List<KostEntity> findAllByOwnerId(String ownerId) throws SQLException {
         return this.kostDao.findAllByOwnerId(ownerId);
     }
+
+    @Override
+    public Response updateById(KostEntity kost) throws SQLException {
+        KostEntity currentKost =  this.kostDao.findById(kost.getId());
+        if(currentKost == null) {
+            return new Response(false, "kost tidak ditemukan");
+        }
+        currentKost.setName(kost.getName());
+        currentKost.setLocation(kost.getLocation());
+        currentKost.setImage(kost.getImage());
+        currentKost.setDescription(kost.getDescription());
+        currentKost.setPrice(kost.getPrice());
+        kostDao.updateById(currentKost);
+        return new Response(true, "Kost Berhasil Diedit");
+    }
+
+    @Override
+    public Response deleteById(String id) throws SQLException {
+        KostEntity kost = this.kostDao.findById(id);
+        if(kost == null) {
+            return new Response(false, "kost tidak ditemukan");
+        }
+        kostDao.deleteById(kost.getId());
+        return new Response(true, "Kost Berhasil Dihapus");
+    }
+
+    @Override
+    public KostEntity findById(String id) throws SQLException {
+        KostEntity kost = this.kostDao.findById(id);
+        if(kost == null) {
+            return null;
+        }
+        return kost;
+    }
+
+    @Override
+    public List<KostEntity> findAll() throws SQLException {
+        return kostDao.findAll();
+    }
+
+    @Override
+    public List<KostEntity> findByOwnerIdAndKeyword(String ownerId, String keyword) throws SQLException {
+        return kostDao.findByOwnerIdAndKeyword(ownerId, keyword);
+    }
+
+    @Override
+    public List<KostEntity> findByKeyword(String keyword) throws SQLException {
+        return this.kostDao.findByKeyword(keyword);
+    }
+
+
 }

@@ -53,7 +53,7 @@ public class KostDaoImpl implements KostDao {
     }
 
     @Override
-    public boolean update(KostEntity kost) throws SQLException {
+    public boolean updateById(KostEntity kost) throws SQLException {
         String query = "UPDATE kosts SET name = ?, location = ?, description = ?, price = ?, image = ?  WHERE id = ?";
         try (PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setString(1, kost.getName());
@@ -67,7 +67,7 @@ public class KostDaoImpl implements KostDao {
     }
 
     @Override
-    public boolean delete(KostEntity kost) throws SQLException {
+    public boolean deleteById(String id) throws SQLException {
         String query = "DELETE FROM kosts WHERE id = ?";
         try (PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setString(1, kost.getId());

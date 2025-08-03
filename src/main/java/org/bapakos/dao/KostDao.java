@@ -9,8 +9,8 @@ import java.util.List;
 public interface KostDao {
     public boolean create(KostEntity kost) throws SQLException;
     public boolean addFacility(List<FacilityEntity> facility, String kostId) throws SQLException;
-    public boolean update(KostEntity kost) throws SQLException;
-    public boolean delete(KostEntity kost) throws SQLException;
+    public boolean updateById(KostEntity kost) throws SQLException;
+    public boolean deleteById(String id) throws SQLException;
     public int countByOwnerId(String ownerId) throws SQLException;
     public boolean findByName(String name) throws SQLException;
     public KostEntity findById(String id) throws SQLException;
