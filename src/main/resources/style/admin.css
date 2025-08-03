@@ -1,0 +1,336 @@
+/* ==========================================================================
+   1. GLOBAL & ROOT LAYOUT
+   ========================================================================== */
+
+.root, .dashboard-root {
+    -fx-background-color: #F4F7FC;
+    -fx-font-family: "System";
+}
+
+/* ==========================================================================
+   2. SIDEBAR & MAIN LAYOUT
+   ========================================================================== */
+
+.sidebar {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #E2E8F0;
+    -fx-border-width: 0 1px 0 0; /* Hanya border kanan */
+}
+
+.logo-text {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1E293B;
+}
+
+.menu-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #333333;
+    -fx-font-size: 14px;
+    -fx-padding: 8px 12px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-cursor: hand;
+}
+
+.menu-button:hover {
+    -fx-background-color: #F1F5F9;
+}
+
+.profile-name {
+    -fx-font-size: 13px;
+    -fx-font-weight: normal;
+    -fx-text-fill: #475569;
+}
+
+.logout-button-sidebar {
+    -fx-background-color: #FEE2E2;
+    -fx-text-fill: #B91C1C;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+    -fx-padding: 10px 12px;
+}
+
+.logout-button-sidebar:hover {
+    -fx-background-color: #FECACA;
+}
+
+/* ==========================================================================
+   3. TYPOGRAPHY & PANEL TITLES
+   ========================================================================== */
+
+.welcome-title {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1E293B;
+}
+
+.panel-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #334155;
+}
+
+.input-label {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #475569;
+}
+
+/* ==========================================================================
+   4. PANELS (FORM, TABLE, STATS)
+   ========================================================================== */
+
+.form-panel, .table-panel, .stat-block {
+    -fx-background-color: white;
+    -fx-background-radius: 16px;
+    -fx-border-color: #E2E8F0;
+    -fx-border-width: 1px;
+    -fx-border-radius: 16px;
+}
+
+.table-panel, .stat-block {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 10, 0, 0, 5);
+}
+
+.stat-card-container {
+    -fx-background-color: transparent;
+}
+
+/* ==========================================================================
+   5. TABLE STYLES
+   ========================================================================== */
+
+.kos-table-header {
+    -fx-background-color: #F8FAFC;
+    -fx-background-radius: 16px 16px 0 0;
+    -fx-border-color: #DEE2E6;
+    -fx-border-width: 0 0 1.5px 0;
+}
+
+.kos-table-header .label {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #64748B;
+    -fx-text-transform: uppercase;
+}
+
+.kos-data-row {
+    -fx-border-color: #F1F5F9;
+    -fx-border-width: 0 0 1px 0;
+    -fx-padding: 15px;
+}
+
+.kos-data-row:hover {
+    -fx-background-color: #F8FAFC;
+}
+
+.kos-data-row .label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #334155;
+    -fx-alignment: center-left;
+}
+
+/* ==========================================================================
+   6. INPUT CONTROLS (TEXTFIELD, COMBOBOX, CHECKBOX)
+   ========================================================================== */
+
+.text-field, .text-area, .combo-box {
+    -fx-font-size: 14px;
+    -fx-background-color: #F8FAFC;
+    -fx-border-color: #E2E8F0;
+    -fx-border-width: 1.5px;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-padding: 8px 12px;
+}
+
+.text-field:focused, .text-area:focused, .combo-box:focused {
+    -fx-border-color: #2563EB;
+    -fx-background-color: white;
+}
+
+.search-field {
+    -fx-pref-width: 250px;
+}
+
+.text-area {
+    -fx-wrap-text: true;
+}
+
+.combo-box .arrow-button { -fx-background-color: transparent; }
+.combo-box .arrow { -fx-background-color: #64748B; }
+
+.check-box {
+    -fx-text-fill: #475569;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+}
+
+.check-box .box {
+    -fx-background-color: #F8FAFC;
+    -fx-border-color: #E2E8F0;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+    -fx-width: 18px;
+    -fx-height: 18px;
+}
+
+.check-box:selected .mark { -fx-background-color: white; }
+.check-box:selected .box {
+    -fx-background-color: #2563EB;
+    -fx-border-color: #2563EB;
+}
+
+/* ==========================================================================
+   7. BUTTONS
+   ========================================================================== */
+
+.create-button {
+    -fx-background-color: #2563EB;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8px;
+    -fx-padding: 10px 20px;
+    -fx-cursor: hand;
+}
+.create-button:hover { -fx-background-color: #1D4ED8; }
+
+.cancel-button {
+    -fx-background-color: #F1F5F9;
+    -fx-text-fill: #475569;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8px;
+    -fx-border-color: #E2E8F0;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 8px;
+    -fx-padding: 10px 20px;
+    -fx-cursor: hand;
+}
+.cancel-button:hover { -fx-background-color: #E2E8F0; }
+
+.action-button-approve {
+    -fx-background-color: #D1FAE5;
+    -fx-background-radius: 6px;
+    -fx-padding: 5px;
+    -fx-cursor: hand;
+}
+.action-button-approve:hover { -fx-background-color: #A7F3D0; }
+
+.action-button-delete {
+    -fx-background-color: #FEE2E2;
+    -fx-background-radius: 6px;
+    -fx-padding: 5px;
+    -fx-cursor: hand;
+}
+.action-button-delete:hover { -fx-background-color: #FECACA; }
+
+/* ==========================================================================
+   8. SPECIAL COMPONENTS (SCROLLPANE, IMAGE ZONE, STATUS LABELS)
+   ========================================================================== */
+
+.no-border-scroll-pane { -fx-background-color: transparent; }
+.no-border-scroll-pane .viewport { -fx-background-color: transparent; }
+.scroll-bar:vertical, .scroll-bar:horizontal { -fx-background-color: transparent; }
+.scroll-bar .thumb { -fx-background-color: #CBD5E1; -fx-background-radius: 8px; }
+.scroll-bar .track { -fx-background-color: transparent; }
+
+.image-drop-zone {
+    -fx-background-color: #F8FAFC;
+    -fx-border-color: #CBD5E1;
+    -fx-border-width: 2px;
+    -fx-border-style: dashed;
+    -fx-border-radius: 12px;
+    -fx-background-radius: 12px;
+    -fx-cursor: hand;
+    -fx-alignment: center;
+}
+.image-drop-zone:hover { -fx-border-color: #2563EB; }
+.image-preview { -fx-background-radius: 10px; -fx-border-radius: 10px; }
+
+.delete-image-button {
+    -fx-background-color: rgba(0, 0, 0, 0.6);
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 50%;
+    -fx-padding: 2px 8px;
+    -fx-cursor: hand;
+}
+.delete-image-button:hover { -fx-background-color: rgba(239, 68, 68, 0.9); }
+
+.status-label {
+    -fx-padding: 4px 10px;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 12px;
+}
+.status-berhasil { -fx-background-color: #D1FAE5; -fx-text-fill: #065F46; }
+.status-pending { -fx-background-color: #FEF3C7; -fx-text-fill: #92400E; }
+.status-gagal { -fx-background-color: #FEE2E2; -fx-text-fill: #991B1B; }
+
+/* ==========================================================================
+   9. STATISTIC CARD SPECIFIC STYLES
+   ========================================================================== */
+
+.stat-title { -fx-font-size: 13px; -fx-text-fill: #64748B; }
+.stat-value { -fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #1E293B; }
+.stat-subtext { -fx-font-size: 12px; -fx-text-fill: #94A3B8; }
+
+/* Gaya dasar untuk semua TextArea */
+.text-area {
+    -fx-font-size: 14px;
+    -fx-background-color: #F8FAFC;
+    -fx-border-color: #E2E8F0;
+    -fx-border-width: 1.5px;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-padding: 8px 12px;
+    -fx-wrap-text: true; /* Memastikan teks otomatis turun baris */
+}
+
+/* Gaya saat TextArea sedang aktif (diklik) */
+.text-area:focused {
+    -fx-border-color: #2563EB; /* Warna border biru saat fokus */
+    -fx-background-color: white;
+}
+
+/* * Menghilangkan latar belakang default dari konten di dalam TextArea
+ * agar warnanya konsisten dengan latar belakang utama.
+ */
+.text-area .content {
+    -fx-background-color: transparent;
+}
+
+.text-area .scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.text-area .scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.text-area .scroll-pane .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-padding: 0 5 0 0; /* Memberi sedikit jarak dari tepi kanan */
+}
+
+.text-area .scroll-pane .scroll-bar:vertical .thumb {
+    -fx-background-color: #CBD5E1; /* Warna thumb scroll bar */
+    -fx-background-radius: 6px;
+}
+
+.text-area .scroll-pane .scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+}
+
+.text-area .scroll-pane .scroll-bar:vertical .increment-button,
+.text-area .scroll-pane .scroll-bar:vertical .decrement-button {
+    -fx-padding: 0; /* Menghilangkan panah atas dan bawah */
+}

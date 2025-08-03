@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.bapakos.controller.LoginController;
 import org.bapakos.controller.RegisterController;
+import org.bapakos.controller.admin.AdminMainController;
 
 import java.io.IOException;
 
@@ -45,6 +46,25 @@ public class ViewManager {
         primaryStage.setScene(scene);
         primaryStage.setTitle("Masuk Akun");
         primaryStage.show();
+    }
+
+    public void adminScene () throws IOException {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/admin-main.fxml"));
+            Parent root = loader.load();
+
+            AdminMainController controller = loader.getController();
+            controller.setViewManager(this);
+
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource("/style/admin.css").toExternalForm());
+
+            primaryStage.setScene(scene);
+            primaryStage.setTitle("Admin");
+            primaryStage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
 }

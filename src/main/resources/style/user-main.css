@@ -1,0 +1,147 @@
+/* ==========================================================================
+Global & Root Layout
+========================================================================== */
+
+.user-dashboard-root {
+    -fx-background-color: #F4F7FC; /* Warna latar belakang utama yang netral */
+    -fx-font-family: "System";
+}
+
+/* ==========================================================================
+   Top Bar
+   ========================================================================== */
+
+.top-bar {
+    -fx-background-color: white;
+    -fx-border-color: #E2E8F0;
+    -fx-border-width: 0 0 1px 0; /* Garis tipis di bawah top bar */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.03), 10, 0, 0, 2);
+}
+
+.logo-text {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1E293B;
+}
+
+.top-bar-action-button {
+    -fx-background-color: transparent;
+    -fx-padding: 8px;
+    -fx-background-radius: 50%; /* Membuat area hover menjadi bulat */
+    -fx-cursor: hand;
+}
+
+.top-bar-action-button:hover {
+    -fx-background-color: #F1F5F9; /* Warna latar belakang saat hover */
+}
+
+/* ==========================================================================
+   Filter Sidebar
+   ========================================================================== */
+
+.filter-sidebar {
+    -fx-background-color: white;
+    -fx-border-color: #E2E8F0;
+    -fx-border-width: 0 1px 0 0; /* Garis tipis di kanan sidebar */
+}
+
+/* Judul di dalam sidebar */
+.filter-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1E293B;
+}
+
+/* Label untuk setiap grup filter */
+.filter-label {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #475569;
+    -fx-padding: 10px 0 0 0;
+}
+
+/* ==========================================================================
+   Sidebar Controls
+   ========================================================================== */
+
+/* Kolom pencarian di sidebar */
+.search-field {
+    -fx-background-radius: 8px 0 0 8px; /* Sudut kiri bulat */
+    -fx-border-color: #E2E8F0;
+    -fx-border-width: 1.5px 0 1.5px 1.5px;
+    -fx-font-size: 14px;
+    -fx-padding: 7px 12px;
+}
+
+.search-field:focused {
+    -fx-border-color: #2563EB;
+}
+
+/* Tombol cari di sebelah search field */
+.create-button {
+    -fx-background-color: #2563EB;
+    -fx-background-radius: 0 8px 8px 0; /* Sudut kanan bulat */
+    -fx-padding: 8px 12px;
+    -fx-cursor: hand;
+}
+.create-button:hover {
+    -fx-background-color: #1D4ED8;
+}
+
+/* Styling umum untuk input filter */
+.filter-sidebar .text-field, .filter-sidebar .combo-box {
+    -fx-background-color: #F8FAFC;
+    -fx-border-color: #E2E8F0;
+    -fx-border-width: 1.5px;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-font-size: 14px;
+}
+
+/* Tombol utama untuk filter */
+.filter-search-button {
+    -fx-background-color: #2563EB;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8px;
+    -fx-padding: 10px 0;
+    -fx-cursor: hand;
+}
+.filter-search-button:hover {
+    -fx-background-color: #1D4ED8;
+}
+
+/* Tombol sekunder untuk refresh */
+.refresh-button {
+    -fx-background-color: #F1F5F9;
+    -fx-text-fill: #475569;
+    -fx-border-color: gray;
+    -fx-border-width: 0.5px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-padding: 10px 0;
+    -fx-cursor: hand;;
+}
+.refresh-button:hover {
+    -fx-background-color: #E2E8F0;
+}
+
+/* Tombol Logout */
+.logout-button {
+    -fx-background-color: #FEE2E2;
+    -fx-text-fill: #B91C1C;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+    -fx-padding: 10px 0;
+}
+.logout-button:hover {
+    -fx-background-color: #FECACA;
+}
+
+/* Garis pemisah */
+.separator .line {
+    -fx-border-color: #F1F5F9;
+    -fx-border-width: 1px;
+}

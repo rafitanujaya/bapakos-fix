@@ -1,0 +1,142 @@
+/* ==========================================================================
+  Global & ScrollPane
+  ========================================================================== */
+
+/* Menghilangkan border dan latar belakang default dari ScrollPane */
+.no-border-scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.no-border-scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+/* Styling untuk scroll-bar agar lebih modern */
+.scroll-bar:vertical, .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #CBD5E1;
+    -fx-background-radius: 8px;
+}
+
+.scroll-bar .track {
+    -fx-background-color: transparent;
+}
+
+/* ==========================================================================
+   Kos Card Styling (Untuk UserDashboardView.fxml)
+   ========================================================================== */
+
+/* Kontainer utama untuk setiap kartu kos */
+.kos-card-user {
+    -fx-background-color: white;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 3);
+    -fx-cursor: hand;
+    -fx-background-radius: 20px; /* Diterapkan di Java, tapi baik untuk ada di sini */
+}
+
+/* Panel teks di bagian bawah kartu */
+.kos-card-text-panel {
+    -fx-background-color: linear-gradient(from 0% 0% to 0% 100%, transparent 0%, rgba(0,0,0,0.7) 100%);
+    -fx-alignment: bottom-left;
+    -fx-pref-height: 120px; /* Tinggi area teks */
+}
+
+/* Nama kos di dalam kartu */
+.kos-card-nama {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+/* Alamat dan teks "perbulan" di dalam kartu */
+.kos-card-alamat {
+    -fx-font-size: 13px;
+    -fx-text-fill: #E2E8F0; /* Abu-abu terang */
+}
+
+/* Harga di dalam kartu */
+.kos-card-harga {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #A7F3D0; /* Hijau terang */
+}
+
+/* ==========================================================================
+   Kos Detail Popup Styling (Untuk KosDetailPopup.fxml)
+   ========================================================================== */
+
+/* Panel utama untuk popup detail */
+.kos-detail-panel {
+    -fx-background-color: white;
+    -fx-background-radius: 16px;
+    -fx-border-color: #E2E8F0;
+    -fx-border-width: 1px;
+    -fx-border-radius: 16px;
+}
+
+/* Nama kos di panel detail */
+.kos-detail-nama {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1E293B;
+}
+
+/* Harga di panel detail */
+.kos-detail-harga {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2563EB; /* Biru */
+}
+
+/* Alamat di panel detail */
+.kos-detail-alamat {
+    -fx-font-size: 14px;
+    -fx-text-fill: #64748B;
+}
+
+/* Deskripsi di panel detail */
+.kos-detail-deskripsi {
+    -fx-font-size: 14px;
+    -fx-text-fill: #475569;
+    -fx-line-spacing: 4px;
+}
+
+/* Tombol "Order Sekarang" */
+.kos-detail-button {
+    -fx-background-color: #2563EB;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 12px;
+    -fx-padding: 12px 0;
+    -fx-cursor: hand;
+}
+
+.kos-detail-button:hover {
+    -fx-background-color: #1D4ED8;
+}
+
+/* Sub-judul untuk bagian seperti "Fasilitas" dan "Deskripsi" */
+.kos-detail-subheader {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #475569;
+}
+
+/* Kontainer untuk setiap item fasilitas (HBox yang Anda buat di controller) */
+.facility-item {
+    -fx-background-color: #F1F5F9;
+    -fx-padding: 5px 10px;
+    -fx-background-radius: 8px;
+    -fx-alignment: center-left;
+}
+
+.facility-item .label {
+    -fx-font-size: 13px;
+    -fx-text-fill: #334155;
+}
