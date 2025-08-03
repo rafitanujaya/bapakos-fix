@@ -69,11 +69,11 @@
                         </HBox>
                         <VBox spacing="5">
                             <Label text="Kode Pos" styleClass="input-label" />
-                            <TextField fx:id="CodePosField" promptText="Contoh: 17111" />
+                            <TextField fx:id="codePosField" promptText="Contoh: 17111" />
                         </VBox>
                         <VBox spacing="5">
                             <Label text="Alamat" styleClass="input-label" />
-                            <TextArea fx:id="addressfield" promptText="Nama jalan, nomor rumah, kecamatan, desa/kelurahan, RT/RW..." prefRowCount="4" />
+                            <TextArea fx:id="addressField" promptText="Nama jalan, nomor rumah, kecamatan, desa/kelurahan, RT/RW..." prefRowCount="4" />
                         </VBox>
                     </VBox>
                     <VBox spacing="10" prefWidth="300">
@@ -114,8 +114,8 @@
 
             <!-- Tombol Aksi -->
             <HBox spacing="10" alignment="CENTER_RIGHT">
-                <Button fx:id="batalButton" text="Batal" styleClass="cancel-button"/>
-                <Button fx:id="simpanButton" text="Simpan" styleClass="create-button"/>
+                <Button fx:id="cancelBtn" text="Batal" onAction="#handleCancel" styleClass="cancel-button"/>
+                <Button fx:id="saveBtn" onAction="#handleCreate" text="Simpan" styleClass="create-button"/>
             </HBox>
         </VBox>
     </content>

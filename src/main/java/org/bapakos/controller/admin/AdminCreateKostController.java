@@ -9,6 +9,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import org.bapakos.controller.location.Location;
 import org.bapakos.dao.KostDao;
+import org.bapakos.model.dto.Response;
+import org.bapakos.model.entity.KostEntity;
 import org.bapakos.service.KostService;
 
 import java.io.File;
@@ -20,7 +22,7 @@ public class AdminCreateKostController {
     @FXML
     private TextField nameField;
     @FXML
-    private TextField priceKosField;
+    private TextField priceField;
     @FXML
     private TextArea descriptionField;
     @FXML
@@ -170,6 +172,44 @@ public class AdminCreateKostController {
         }
 
         return locationBuilder.toString();
+    }
+
+    public void handleCreate() throws IOException {
+        try {
+            String name = nameField.getText();
+            int price = Integer.valueOf(priceField.getText());
+            String description = descriptionField.getText();
+            String address = this.getFormattedLocation();
+
+            System.out.println("Name: " + name);
+            System.out.println("Price: " + price);
+            System.out.println("Description: " + description);
+            System.out.println("Address: " + address);
+
+            if(name.isEmpty() || description.isEmpty() || address.isEmpty()) {
+
+            }
+
+            if(price < 0) {
+
+            }
+
+            KostEntity kost = new KostEntity();
+            kost.setName(name);
+            kost.setPrice(price);
+            kost.setDescription(description);
+            kost.setLocation(address);
+            kost.setImage(imageData);
+
+            Response result = kostService.create(kost);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void handleCancel() throws IOException {
+
     }
 
 }
