@@ -16,7 +16,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public boolean create(UserEntity user) throws SQLException {
-        String query = "INSERT INTO users(id, username, password, role) VALUES (?, ?, ?, ?)";
+        String query = "INSERT INTO users(id, username, password, roles) VALUES (?, ?, ?, ?)";
         try (PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setString(1, user.getId());
             ps.setString(2, user.getUsername());
@@ -46,7 +46,7 @@ public class UserDaoImpl implements UserDao {
                 user.setId(rs.getString("id"));
                 user.setUsername(rs.getString("username"));
                 user.setPassword(rs.getString("password"));
-                user.setRole(UserEntity.Role.valueOf(rs.getString("role")));
+                user.setRole(UserEntity.Role.valueOf(rs.getString("roles")));
                 return user;
             }
         }

@@ -15,6 +15,7 @@
 <HBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       prefHeight="720.0" prefWidth="1220.0"
+      fx:controller="org.bapakos.controller.RegisterController"
       styleClass="container"
       >
    <ImageView fx:id="banner" fitWidth="650" fitHeight="680" styleClass="">
@@ -39,13 +40,13 @@
             <Insets top="44"/>
          </VBox.margin>
 
-         <!-- Email -->
-         <Label text="Email" styleClass="form-label"/>
-         <TextField promptText="example@example.com" styleClass="form-field"/>
+         <!-- Username -->
+         <Label text="Username" styleClass="form-label"/>
+         <TextField fx:id="usernameField" promptText="Jhon Doe" styleClass="form-field"/>
 
          <!-- Password -->
          <Label text="Password" styleClass="form-label"/>
-         <PasswordField promptText="••••••••••" styleClass="form-field"/>
+         <PasswordField fx:id="passwordField" promptText="••••••••••" styleClass="form-field"/>
 
          <HBox alignment="CENTER_LEFT" spacing="6">
             <CheckBox fx:id="roleCheckbox"/>
@@ -56,12 +57,12 @@
             <VBox.margin>
                <Insets top="12"/>
             </VBox.margin>
-            <Button text="Masuk" styleClass="form-button" maxWidth="Infinity"/>
+            <Button onAction="#handleRegister" text="Daftar" styleClass="form-button" maxWidth="Infinity"/>
          </VBox>
 
          <TextFlow styleClass="link-text">
             <Text text="Sudah mempunyai akun? " />
-            <Text text="Masuk" styleClass="link-action"/>
+            <Text fx:id="loginLink" text="Masuk" styleClass="link-action"/>
          </TextFlow>
 
       </VBox>

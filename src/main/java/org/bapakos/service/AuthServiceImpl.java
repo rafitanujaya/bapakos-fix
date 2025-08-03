@@ -1,6 +1,7 @@
 package org.bapakos.service;
 
 import org.bapakos.dao.UserDao;
+import org.bapakos.model.dto.Response;
 import org.bapakos.model.entity.UserEntity;
 import org.bapakos.util.PasswordUtil;
 
@@ -16,9 +17,9 @@ public class AuthServiceImpl implements AuthService {
 
 
     @Override
-    public boolean register(String username, String password, UserEntity.Role role) throws SQLException {
+    public Response register(String username, String password, UserEntity.Role role) throws SQLException {
         if(this.userDao.usernameExists(username)) {
-            return false;
+            return new Response(false, "Username sudah digunakan");
         }
         UserEntity user = new UserEntity();
         user.setId(UUID.randomUUID().toString());
@@ -26,7 +27,8 @@ public class AuthServiceImpl implements AuthService {
         user.setPassword(PasswordUtil.hashPassword(password));
         user.setRole(role);
 
-        return this.userDao.create(user);
+        this.userDao.create(user);
+        return new Response(true, "Pendaftaran Akun Berhasil Dilakukan");
     }
 
     @Override

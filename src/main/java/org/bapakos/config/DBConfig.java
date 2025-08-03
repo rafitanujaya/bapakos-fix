@@ -18,7 +18,8 @@ public class DBConfig {
         }
     }
 
-    public Connection getConnector() throws SQLException {
+    public Connection getConnector() throws SQLException, ClassNotFoundException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
         return connector.getConnection();
     }
 }
