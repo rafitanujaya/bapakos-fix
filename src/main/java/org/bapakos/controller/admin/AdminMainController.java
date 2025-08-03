@@ -73,18 +73,23 @@ public class AdminMainController {
             FXMLLoader loader = new FXMLLoader(resourceUrl);
             Parent page = loader.load();
 
-            Object loadedController = loader.getController();
+            Object controller = loader.getController();
 
-            if (loadedController instanceof AdminDashboardController controller) {
-                controller.setMainController(this);
-                controller.setServiceManager(serviceManager);
+            if (controller instanceof AdminDashboardController c) {
+                c.setMainController(this);
+                c.setViewManager(viewManager);
+                c.setServiceManager(serviceManager);
+            } else if (controller instanceof AdminCreateKostController c) {
+                c.setMainController(this);
+                c.setKostService(serviceManager.getKostService());
+                c.setViewManager(viewManager);
+            } else if (controller instanceof AdminTransactionController c) {
+                c.setServiceManager(serviceManager);
+                c.setViewManager(viewManager);
+            } else if (controller instanceof AdminBookingController c) {
+                c.setServiceManager(serviceManager);
+                c.setViewManager(viewManager);
             }
-
-            if (loadedController instanceof AdminCreateKostController) {
-                ((AdminCreateKostController) loadedController).setKostService(serviceManager.getKostService());
-                ((AdminCreateKostController) loadedController).setViewManager(viewManager);
-            }
-            // Tambahkan untuk controller lain jika perlu
 
             root.setCenter(page);
 
@@ -93,6 +98,7 @@ public class AdminMainController {
             e.printStackTrace();
         }
     }
+
 
     /**
      * Mengganti scene saat ini ke login tanpa membuat Stage baru.

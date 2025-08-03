@@ -46,11 +46,14 @@ public class AdminCreateKostController {
 
     // Tambahkan referensi ke MainController
     private AdminMainController mainController;
+    private ViewManager viewManager;
 
     public void setMainController(AdminMainController mainController) {
         this.mainController = mainController;
     }
-
+    public void setViewManager(ViewManager viewManager) {
+        this.viewManager = viewManager;
+    }
     public void setKostService(KostService kostService) {
         this.kostService = kostService;
     }

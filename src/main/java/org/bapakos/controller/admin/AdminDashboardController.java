@@ -27,6 +27,7 @@ public class AdminDashboardController {
     private AdminMainController mainController;
     private AdminCreateKostController createKostController;
     private ServiceManager serviceManager;
+    private ViewManager viewManager;
 
     /**
      * Metode ini akan dipanggil oleh AdminMainController untuk memberikan referensinya.
@@ -34,7 +35,9 @@ public class AdminDashboardController {
     public void setMainController(AdminMainController mainController) {
         this.mainController = mainController;
     }
-
+    public void setViewManager(ViewManager viewManager) {
+        this.viewManager = viewManager;
+    }
     public void setServiceManager(ServiceManager serviceManager) {
         this.serviceManager = serviceManager;
     }

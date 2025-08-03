@@ -11,17 +11,19 @@
             prefHeight="720"
             styleClass="dashboard-root"
             fx:controller="org.bapakos.controller.admin.AdminMainController">
+
+    <!-- SIDEBAR -->
     <left>
         <VBox spacing="10" alignment="TOP_LEFT" styleClass="sidebar" BorderPane.alignment="CENTER_LEFT">
             <padding>
                 <Insets top="25" right="20" bottom="25" left="20"/>
             </padding>
 
-            <!-- Logo Box -->
+            <!-- Logo -->
             <VBox spacing="10" alignment="CENTER">
                 <ImageView fitHeight="90" fitWidth="90">
                     <image>
-                        <Image url="@/image/logo.png" />
+                        <Image url="@/image/logo.png"/>
                     </image>
                 </ImageView>
                 <Label text="BapaKos" styleClass="logo-text"/>
@@ -30,7 +32,7 @@
                 </VBox.margin>
             </VBox>
 
-            <!-- Menu Button Box -->
+            <!-- Menu -->
             <VBox spacing="5">
                 <Button fx:id="dashboardBtn" text="Dashboard" styleClass="menu-button" alignment="CENTER_LEFT" maxWidth="Infinity">
                     <graphic>
@@ -67,7 +69,6 @@
                 </Separator>
             </VBox>
 
-            <!-- Spacer -->
             <VBox VBox.vgrow="ALWAYS"/>
 
             <!-- Profile Info -->
@@ -83,12 +84,14 @@
                 </VBox.margin>
             </HBox>
 
-            <!-- Logout Button -->
             <Button fx:id="logoutBtn" text="Logout" styleClass="logout-button-sidebar" maxWidth="Infinity"/>
         </VBox>
     </left>
 
+    <!-- PANEL KONTEN DINAMIS -->
     <center>
-        <Label text="Konten Awal" />
+        <StackPane fx:id="contentArea" BorderPane.alignment="CENTER">
+            <Label text="Konten Awal" />
+        </StackPane>
     </center>
 </BorderPane>
