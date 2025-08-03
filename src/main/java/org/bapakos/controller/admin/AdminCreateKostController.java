@@ -8,6 +8,8 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import org.bapakos.controller.location.Location;
+import org.bapakos.manager.ServiceManager;
+import org.bapakos.manager.ViewManager;
 import org.bapakos.model.dto.CreateKostDto;
 import org.bapakos.model.dto.Response;
 import org.bapakos.model.entity.FacilityEntity;
@@ -35,6 +37,7 @@ public class AdminCreateKostController {
     @FXML private CheckBox wifiCheckBox;
 
     private KostService kostService;
+    private ViewManager viewManager;
     private File selectedImageFile;
     private byte[] imageData;
 
@@ -49,6 +52,9 @@ public class AdminCreateKostController {
     public void setMainController(AdminMainController mainController) {
         this.mainController = mainController;
     }
+
+
+    public void setViewManager(ViewManager viewManager) {this.viewManager = viewManager;}
 
     public void setKostService(KostService kostService) {
         this.kostService = kostService;
@@ -211,8 +217,8 @@ public class AdminCreateKostController {
                 alert.showAndWait();
 
                 // Kembali ke dashboard setelah berhasil
-                if (mainController != null) {
-                    mainController.loadPage("admin-dashboard.fxml");
+                if (viewManager != null) {
+                    viewManager.adminScene();
                 }
             } else {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
