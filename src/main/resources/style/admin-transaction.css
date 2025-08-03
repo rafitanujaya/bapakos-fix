@@ -1,0 +1,149 @@
+/* ==========================================================================
+   Global Styles & Root
+   ========================================================================== */
+
+/* Mengatur warna latar belakang utama dan font default */
+.root {
+    -fx-background-color: #F4F7FC; /* Latar belakang abu-abu sangat terang */
+    -fx-font-family: "System";
+}
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+
+/* Judul utama halaman (misal: "Booking Kost") */
+.welcome-title {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1E293B; /* Warna teks biru tua */
+}
+
+/* ==========================================================================
+   Table Panel
+   ========================================================================== */
+
+/* Panel utama yang membungkus tabel booking */
+.table-panel {
+    -fx-background-color: white;
+    -fx-background-radius: 16px; /* Sudut membulat untuk seluruh panel */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 10, 0, 0, 5); /* Bayangan halus */
+}
+
+.kos-table-header {
+    -fx-background-color: #E7F5FF;
+    -fx-background-radius: 16px 16px 0 0;
+    -fx-font-weight: bold;
+    -fx-text-fill: #6C757D; /* Warna teks abu-abu */
+    -fx-border-color: #DEE2E6;
+    -fx-border-width: 0 0 1.5px 0; /* Garis bawah */
+}
+
+.kos-table-header .label {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #64748B;
+    -fx-text-transform: uppercase;
+}
+
+/* Baris data di dalam tabel (diasumsikan akan ditambahkan dari controller) */
+.kos-data-row {
+    -fx-border-color: #F1F5F9; /* Garis pemisah antar baris */
+    -fx-border-width: 0 0 1px 0; /* Hanya garis bawah */
+    -fx-padding: 15px;
+}
+
+.kos-data-row:hover {
+    -fx-background-color: #F8FAFC; /* Efek hover saat mouse di atas baris */
+}
+
+.kos-data-row .label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #334155;
+    -fx-alignment: center-left;
+}
+
+/* ==========================================================================
+   Controls (Buttons, TextField, ScrollPane)
+   ========================================================================== */
+
+/* Kolom pencarian */
+.search-field {
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-border-color: #E2E8F0;
+    -fx-font-size: 14px;
+    -fx-padding: 7px 12px;
+    -fx-pref-width: 250px; /* Memberi lebar default */
+}
+
+.search-field:focused {
+    -fx-border-color: #2563EB; /* Warna border biru saat aktif */
+}
+
+/* Tombol utama di header (dalam kasus ini, tombol cari) */
+.create-button {
+    -fx-background-color: #2563EB; /* Warna biru primer */
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8px;
+    -fx-padding: 8px; /* Disesuaikan untuk tombol ikon */
+    -fx-cursor: hand;
+}
+
+.create-button:hover {
+    -fx-background-color: #1D4ED8; /* Warna biru lebih gelap saat hover */
+}
+
+/* Menghilangkan border dan latar belakang default dari ScrollPane */
+.no-border-scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.no-border-scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+/* Styling untuk scroll-bar agar lebih modern */
+.scroll-bar:vertical, .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #CBD5E1;
+    -fx-background-radius: 8px;
+}
+
+.scroll-bar .track {
+    -fx-background-color: transparent;
+}
+
+
+/* Styling dasar untuk semua label status */
+.status-label {
+    -fx-padding: 4px 10px;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 12px; /* Membuatnya berbentuk pil */
+}
+
+/* Warna untuk status berhasil */
+.status-berhasil {
+    -fx-background-color: #D1FAE5; /* Hijau muda */
+    -fx-text-fill: #065F46;      /* Hijau tua */
+}
+
+/* Warna untuk status pending */
+.status-pending {
+    -fx-background-color: #FEF3C7; /* Kuning muda */
+    -fx-text-fill: #92400E;      /* Coklat tua */
+}
+
+/* Warna untuk status gagal */
+.status-gagal {
+    -fx-background-color: #FEE2E2; /* Merah muda */
+    -fx-text-fill: #991B1B;      /* Merah tua */
+}

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:id="root" prefWidth="1220" prefHeight="720" styleClass="dashboard-root">
+    <left>
+        <VBox spacing="10" alignment="TOP_LEFT" styleClass="sidebar" BorderPane.alignment="CENTER_LEFT">
+            <padding>
+                <Insets top="25" right="20" bottom="25" left="20"/>
+            </padding>
+
+            <!-- Logo Box -->
+            <VBox spacing="10" alignment="CENTER">
+                <ImageView fitHeight="90" fitWidth="90">
+                    <image>
+                        <Image url="@/image/logo.png" />
+                    </image>
+                </ImageView>
+                <Label text="BapaKos" styleClass="logo-text"/>
+                <VBox.margin>
+                    <Insets bottom="30"/>
+                </VBox.margin>
+            </VBox>
+
+            <!-- Menu Button Box -->
+            <VBox spacing="5">
+                <Button fx:id="dashboardBtn" text="Dashboard" styleClass="menu-button" alignment="CENTER_LEFT" maxWidth="Infinity">
+                    <graphic>
+                        <ImageView fitHeight="18" fitWidth="18">
+                            <image>
+                                <Image url="@/image/home-icon.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button fx:id="transactionBtn" text="Transaksi" styleClass="menu-button" alignment="CENTER_LEFT" maxWidth="Infinity">
+                    <graphic>
+                        <ImageView fitHeight="18" fitWidth="18">
+                            <image>
+                                <Image url="@/image/transaction-icon.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button fx:id="bookingBtn" text="Order" styleClass="menu-button" alignment="CENTER_LEFT" maxWidth="Infinity">
+                    <graphic>
+                        <ImageView fitHeight="18" fitWidth="18">
+                            <image>
+                                <Image url="@/image/order-icon.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+
+                <Separator>
+                    <padding>
+                        <Insets top="10" bottom="10"/>
+                    </padding>
+                </Separator>
+            </VBox>
+
+            <!-- Spacer -->
+            <VBox VBox.vgrow="ALWAYS"/>
+
+            <!-- Profile Info -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <ImageView fitHeight="28" fitWidth="28">
+                    <image>
+                        <Image url="@/image/profile-icon.png"/>
+                    </image>
+                </ImageView>
+                <Label fx:id="profileNameLabel" text="Memuat..." styleClass="profile-name"/>
+                <VBox.margin>
+                    <Insets bottom="10"/>
+                </VBox.margin>
+            </HBox>
+
+            <!-- Logout Button -->
+            <Button fx:id="logoutBtn" text="Logout" styleClass="logout-button-sidebar" maxWidth="Infinity"/>
+        </VBox>
+    </left>
+
+    <center>
+        <Label text="Konten Awal" />
+    </center>
+</BorderPane>

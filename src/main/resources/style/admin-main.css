@@ -1,0 +1,57 @@
+/* Root Dashboard Layout */
+.dashboard-root {
+    -fx-background-color: #f4f4f4;
+}
+
+/* Sidebar styling */
+.sidebar {
+    -fx-background-color: #ffffff;
+    -fx-padding: 20;
+    -fx-spacing: 10;
+    -fx-border-color: #dddddd;
+    -fx-border-width: 0 1 0 0; /* right border only */
+}
+
+/* Logo text */
+.logo-text {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+}
+
+/* Menu buttons */
+.menu-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #333333;
+    -fx-font-size: 14px;
+    -fx-padding: 8 12 8 12;
+    -fx-alignment: CENTER_LEFT;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+}
+
+.menu-button:hover {
+    -fx-background-color: #e0e0e0;
+}
+
+/* Profile name label */
+.profile-name {
+    -fx-font-size: 13px;
+    -fx-text-fill: #555555;
+    -fx-font-weight: normal;
+}
+
+/* Logout button */
+.logout-button-sidebar {
+    -fx-background-color: #ff5c5c;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+    -fx-padding: 10 12;
+}
+
+.logout-button-sidebar:hover {
+    -fx-background-color: #e14e4e;
+}

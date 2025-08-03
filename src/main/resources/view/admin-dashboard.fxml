@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Priority?>
+
+<!--
+  Root element VBox. Ukuran diatur ke 1220x720.
+  fx:controller menunjuk ke kelas controller yang akan mengelola view ini.
+-->
+<VBox fx:id="mainContent" prefHeight="720" prefWidth="1220" spacing="25" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+    <padding>
+        <Insets bottom="30" left="30" right="30" top="30" />
+    </padding>
+
+    <!-- Label selamat datang, setara dengan 'welcomeLabel' -->
+    <Label fx:id="welcomeLabel" styleClass="welcome-title" text="memuat..." />
+
+    <!-- HBox untuk kartu statistik, setara dengan 'statsCard' -->
+    <HBox fx:id="statsCard" spacing="1" styleClass="stat-card-container">
+        <!-- Blok Statistik 1 -->
+        <VBox styleClass="stat-block" spacing="5" HBox.hgrow="ALWAYS">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20" />
+            </padding>
+            <Label styleClass="stat-title" text="Total Revenue" />
+            <Label styleClass="stat-value" text="Rp 9.000.000,00" />
+            <Label styleClass="stat-subtext" text="+7.5% dari bulan lalu" />
+        </VBox>
+        <!-- Blok Statistik 2 -->
+        <VBox styleClass="stat-block" spacing="5" HBox.hgrow="ALWAYS">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20" />
+            </padding>
+            <Label styleClass="stat-title" text="Jumlah Kos Dimiliki" />
+            <Label styleClass="stat-value" text="12" />
+            <Label styleClass="stat-subtext" text="+2 kos baru" />
+        </VBox>
+        <!-- Blok Statistik 3 -->
+        <VBox styleClass="stat-block" spacing="5" HBox.hgrow="ALWAYS">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20" />
+            </padding>
+            <Label styleClass="stat-title" text="Jumlah Transaksi" />
+            <Label styleClass="stat-value" text="89" />
+            <Label styleClass="stat-subtext" text="5 transaksi berhasil" />
+        </VBox>
+    </HBox>
+
+    <!-- Panel tabel kos, setara dengan 'kosTablePanel' -->
+    <VBox styleClass="table-panel" VBox.vgrow="ALWAYS">
+        <!-- Header tabel dengan judul, pencarian, dan tombol Buat -->
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20" />
+            </padding>
+            <Label styleClass="panel-title" text="Semua Kost Yang dimiliki" />
+            <HBox HBox.hgrow="ALWAYS" /> <!-- Spacer -->
+
+            <!-- Kolom Pencarian -->
+            <TextField fx:id="searchField" promptText="Cari Kos..." styleClass="search-field" />
+
+            <!-- Tombol Buat -->
+            <Button fx:id="createButton" styleClass="create-button" text="Buat">
+                <graphic>
+                    <ImageView fitHeight="18" fitWidth="18">
+                        <!-- Path gambar diubah menjadi ikon tambah -->
+                        <Image url="@/image/add-icon-white.png" />
+                    </ImageView>
+                </graphic>
+            </Button>
+        </HBox>
+
+        <!-- Wrapper untuk tabel agar bisa diberi margin dan clip -->
+        <VBox>
+            <VBox.margin>
+                <Insets left="20" right="20" bottom="20" />
+            </VBox.margin>
+
+            <!-- Header row untuk tabel kos -->
+            <HBox styleClass="kos-table-header">
+                <padding>
+                    <Insets top="10" right="15" bottom="10" left="15" />
+                </padding>
+                <Label text="No" prefWidth="60" />
+                <Label text="Nama" prefWidth="240" />
+                <Label text="Alamat" prefWidth="330" HBox.hgrow="ALWAYS" />
+                <Label text="Harga" prefWidth="175" />
+                <Label text="Aksi" prefWidth="80" />
+            </HBox>
+
+            <!-- ScrollPane untuk menampung baris data yang dinamis -->
+            <ScrollPane fitToWidth="true" styleClass="no-border-scroll-pane" VBox.vgrow="ALWAYS">
+                <!-- Kontainer untuk baris data, akan diisi oleh controller -->
+                <VBox fx:id="rowsContainer" styleClass="rows-container" />
+            </ScrollPane>
+        </VBox>
+    </VBox>
+</VBox>
