@@ -43,23 +43,25 @@ public class AdminMainController {
     public void setViewManager(ViewManager viewManager) {
         this.viewManager = viewManager;
     }
-
-    public void setServiceManager(ServiceManager serviceManager) {
-        this.serviceManager = serviceManager;
-    }
+    public void setServiceManager(ServiceManager serviceManager) {this.serviceManager = serviceManager;}
+    public ServiceManager getServiceManager() {return serviceManager;}
 
     @FXML
     public void initialize() {
         profileNameLabel.setText("Admin BapaKos");
 
-        loadPage("admin-dashboard.fxml");
-
-
         dashboardBtn.setOnAction(event -> loadPage("admin-dashboard.fxml"));
         transactionBtn.setOnAction(event -> loadPage("admin-transaction.fxml"));
         bookingBtn.setOnAction(event -> loadPage("admin-booking.fxml"));
         logoutBtn.setOnAction(event -> handleLogout());
+
+
     }
+
+    public void initAfterInject() {
+        loadPage("admin-dashboard.fxml"); // ✅ ini dijamin setelah setter dipanggil
+    }
+
 
     public void loadPage(String fxmlFileName) {
         try {
@@ -68,6 +70,9 @@ public class AdminMainController {
             if (resourceUrl == null) {
                 System.err.println("Error: File FXML tidak ditemukan di path: " + fxmlPath);
                 return;
+            }
+            if (viewManager == null) {
+                System.out.println("ViewManager tidak ditemukan");
             }
 
             FXMLLoader loader = new FXMLLoader(resourceUrl);
@@ -79,6 +84,7 @@ public class AdminMainController {
                 c.setMainController(this);
                 c.setViewManager(viewManager);
                 c.setServiceManager(serviceManager);
+                c.initAfterInject(serviceManager);
             } else if (controller instanceof AdminCreateKostController c) {
                 c.setMainController(this);
                 c.setKostService(serviceManager.getKostService());

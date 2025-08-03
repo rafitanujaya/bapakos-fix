@@ -15,7 +15,10 @@
   Root element VBox. Ukuran diatur ke 1220x720.
   fx:controller menunjuk ke kelas controller yang akan mengelola view ini.
 -->
-<VBox fx:id="mainContent" prefHeight="720" prefWidth="1220" spacing="25" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.bapakos.controller.admin.AdminDashboardController">
+<VBox fx:id="mainContent" prefHeight="720" prefWidth="1220" spacing="25"
+      xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.bapakos.controller.admin.AdminDashboardController">
     <padding>
         <Insets bottom="30" left="30" right="30" top="30" />
     </padding>

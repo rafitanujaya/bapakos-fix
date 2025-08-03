@@ -238,4 +238,6 @@ public class AdminCreateKostController {
             mainController.loadPage("admin-dashboard.fxml");
         }
     }
+
+
 }

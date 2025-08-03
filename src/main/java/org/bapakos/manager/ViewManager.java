@@ -7,6 +7,7 @@ import javafx.stage.Stage;
 import org.bapakos.controller.LoginController;
 import org.bapakos.controller.RegisterController;
 import org.bapakos.controller.admin.AdminCreateKostController;
+import org.bapakos.controller.admin.AdminDashboardController;
 import org.bapakos.controller.admin.AdminMainController;
 import org.bapakos.controller.user.UserMainController;
 
@@ -58,6 +59,7 @@ public class ViewManager {
             AdminMainController controller = loader.getController();
             controller.setServiceManager(serviceManager);
             controller.setViewManager(this);
+            controller.initAfterInject();
 
             Scene scene = new Scene(root);
             scene.getStylesheets().add(getClass().getResource("/style/admin.css").toExternalForm());
@@ -86,5 +88,26 @@ public class ViewManager {
             e.printStackTrace();
         }
     }
+
+    public void adminDashboardScene () throws IOException {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/admin-dashboard.fxml"));
+            Parent root = loader.load();
+
+            AdminDashboardController controller = loader.getController();
+            controller.setServiceManager(serviceManager);
+            controller.setViewManager(this);
+
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource("/style/admin.css").toExternalForm());
+
+            primaryStage.setScene(scene);
+            primaryStage.setTitle("Admin");
+            primaryStage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
 
 }

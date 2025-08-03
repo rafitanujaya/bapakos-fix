@@ -70,7 +70,7 @@ public class KostDaoImpl implements KostDao {
     public boolean deleteById(String id) throws SQLException {
         String query = "DELETE FROM kosts WHERE id = ?";
         try (PreparedStatement ps = conn.prepareStatement(query)) {
-            ps.setString(1, kost.getId());
+            ps.setString(1, id);
             return ps.executeUpdate() > 0;
         }
     }
