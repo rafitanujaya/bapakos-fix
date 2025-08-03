@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.TextFlow?>
+<?import javafx.scene.text.Text?>
+<HBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      prefHeight="720.0" prefWidth="1220.0"
+      styleClass="container"
+      >
+   <ImageView fx:id="banner" fitWidth="650" fitHeight="680" styleClass="">
+      <clip>
+         <Rectangle arcWidth="20" arcHeight="20" width="650" height="680"/>
+      </clip>
+      <Image url="@../image/banner.png"/>
+   </ImageView>
+
+
+   <VBox styleClass="form" >
+      <VBox alignment="CENTER" spacing="16">
+         <ImageView fitHeight="155" fitWidth="155">
+            <Image url="@../image/logo.png"/>
+         </ImageView>
+         <Label text="Buat Akun BapaKos" styleClass="logo-title"/>
+      </VBox>
+
+      <VBox spacing="12">
+
+         <VBox.margin>
+            <Insets top="44"/>
+         </VBox.margin>
+
+         <!-- Email -->
+         <Label text="Email" styleClass="form-label"/>
+         <TextField promptText="example@example.com" styleClass="form-field"/>
+
+         <!-- Password -->
+         <Label text="Password" styleClass="form-label"/>
+         <PasswordField promptText="••••••••••" styleClass="form-field"/>
+
+         <HBox alignment="CENTER_LEFT" spacing="6">
+            <CheckBox fx:id="roleCheckbox"/>
+            <Label text="Sebagai penyewa" styleClass="form-label"/>
+         </HBox>
+
+         <VBox>
+            <VBox.margin>
+               <Insets top="12"/>
+            </VBox.margin>
+            <Button text="Masuk" styleClass="form-button" maxWidth="Infinity"/>
+         </VBox>
+
+         <TextFlow styleClass="link-text">
+            <Text text="Sudah mempunyai akun? " />
+            <Text text="Masuk" styleClass="link-action"/>
+         </TextFlow>
+
+      </VBox>
+   </VBox>
+</HBox>
