@@ -1,6 +1,7 @@
 package org.bapakos.controller.admin;
 
 import javafx.fxml.FXML;
+
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -8,11 +9,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import org.bapakos.manager.ServiceManager;
 import org.bapakos.manager.ViewManager;
+import org.bapakos.controller.admin.AdminCreateKostController;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class AdminDashboardController implements Initializable {
+public class AdminDashboardController {
 
     @FXML private VBox mainContent;
     @FXML private Label welcomeLabel;
@@ -23,6 +25,7 @@ public class AdminDashboardController implements Initializable {
 
     // Variabel untuk menyimpan referensi ke controller utama
     private AdminMainController mainController;
+    private AdminCreateKostController createKostController;
     private ServiceManager serviceManager;
 
     /**
@@ -37,8 +40,8 @@ public class AdminDashboardController implements Initializable {
     }
     // ---------------------------------
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    @FXML
+    public void initialize() {
         welcomeLabel.setText("Selamat Datang, Admin!");
         createButton.setOnAction(event -> handleCreateKos());
         loadDashboardData();
@@ -55,6 +58,7 @@ public class AdminDashboardController implements Initializable {
         if (mainController != null) {
             // Beri perintah ke controller utama untuk memuat halaman create
             mainController.loadPage("admin-create.fxml");
+
         } else {
             System.err.println("Error: MainController belum di-set.");
         }

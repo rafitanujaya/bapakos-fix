@@ -8,6 +8,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import org.bapakos.controller.location.Location;
+import org.bapakos.manager.ViewManager;
 import org.bapakos.model.dto.Response;
 import org.bapakos.model.entity.KostEntity;
 import org.bapakos.service.KostService;
@@ -41,9 +42,14 @@ public class AdminCreateKostController {
 
     // Tambahkan referensi ke MainController
     private AdminMainController mainController;
+    private ViewManager viewManager;
 
     public void setMainController(AdminMainController mainController) {
         this.mainController = mainController;
+    }
+
+    public void setViewManager(ViewManager viewManager) {
+        this.viewManager = viewManager;
     }
 
     public void setKostService(KostService kostService) {
@@ -190,8 +196,8 @@ public class AdminCreateKostController {
                 alert.showAndWait();
 
                 // Kembali ke dashboard setelah berhasil
-                if (mainController != null) {
-                    mainController.loadPage("admin-dashboard.fxml");
+                if (viewManager != null) {
+                    viewManager.adminScene();
                 }
             } else {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
