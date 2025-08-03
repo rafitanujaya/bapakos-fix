@@ -128,9 +128,50 @@ public class AdminCreateKostController {
     public void handleCreate() {
         try {
             String name = nameField.getText();
-            int price = Integer.parseInt(priceField.getText());
+            int price = Integer.parseInt(priceField.getText() == "" ? "0" : priceField.getText());
             String description = descriptionField.getText();
             String address = getFormattedLocation();
+
+            System.out.println("Name: " + name);
+            System.out.println("Price: " + price);
+            System.out.println("Description: " + description);
+            System.out.println("Address: " + address);
+
+            if(name.isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Gagal dibuat");
+                alert.setHeaderText(null);
+                alert.setContentText("Nama Kost tidak boleh kosong");
+                alert.showAndWait();
+                return;
+            }
+
+            if (price <= 0) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Gagal dibuat");
+                alert.setHeaderText(null);
+                alert.setContentText("Harga tidak boleh kosong");
+                alert.showAndWait();
+                return;
+            }
+
+            if(price < 100000) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Gagal dibuat");
+                alert.setHeaderText(null);
+                alert.setContentText("Harga Kost tidak boleh dibawah Rp 100.000,00");
+                alert.showAndWait();
+                return;
+            }
+
+            if (address.isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Gagal dibuat");
+                alert.setHeaderText(null);
+                alert.setContentText("Alamat tidak boleh kosong");
+                alert.showAndWait();
+                return;
+            }
 
             KostEntity kost = new KostEntity();
             kost.setName(name);
@@ -141,10 +182,25 @@ public class AdminCreateKostController {
 
             Response result = kostService.create(kost);
 
-            // Kembali ke dashboard setelah berhasil
-            if (mainController != null) {
-                mainController.loadPage("admin-dashboard.fxml");
+            if (result.isSuccess()) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Kost Berhasil Dibuat");
+                alert.setHeaderText(null);
+                alert.setContentText("Kost berhasil dibuat");
+                alert.showAndWait();
+
+                // Kembali ke dashboard setelah berhasil
+                if (mainController != null) {
+                    mainController.loadPage("admin-dashboard.fxml");
+                }
+            } else {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Gagal dibuat");
+                alert.setHeaderText(null);
+                alert.setContentText(result.getMessage());
+                alert.showAndWait();
             }
+            return;
 
         } catch (Exception e) {
             e.printStackTrace();

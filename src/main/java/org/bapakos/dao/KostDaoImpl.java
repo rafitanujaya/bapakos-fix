@@ -17,7 +17,7 @@ public class KostDaoImpl implements KostDao {
 
     @Override
     public boolean create(KostEntity kost) throws SQLException {
-        String query = "INSERT INTO kost (id, owner_id, name, location, description, price, image) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO kosts(id, owner_id, name, location, description, price, image) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setString(1, kost.getId());
             ps.setString(2, kost.getOwnerId());
@@ -47,7 +47,7 @@ public class KostDaoImpl implements KostDao {
 
     @Override
     public boolean findByName(String name) throws SQLException {
-        String query = "SELECT name FROM kost WHERE name = ?";
+        String query = "SELECT name FROM kosts WHERE name = ?";
         try (PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setString(1, name);
             return ps.executeQuery().next();
