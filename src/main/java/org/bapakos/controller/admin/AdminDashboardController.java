@@ -74,4 +74,6 @@ public class AdminDashboardController {
         placeholder.setStyle("-fx-padding: 20px; -fx-font-size: 14px; -fx-text-fill: #888;");
         rowsContainer.getChildren().add(placeholder);
     }
+
+    private VBox createRecordKost(int i, String name, String )
 }

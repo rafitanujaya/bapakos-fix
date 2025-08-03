@@ -7,6 +7,7 @@ import org.bapakos.model.entity.KostEntity;
 import org.bapakos.session.Session;
 
 import java.sql.SQLException;
+import java.util.List;
 import java.util.UUID;
 
 public class KostServiceImpl implements KostService {
@@ -33,5 +34,10 @@ public class KostServiceImpl implements KostService {
         kostDao.addFacility(kost.getFacilities(), newKost.getId());
 
         return new Response(true, "Kost Berhasil Dibuat");
+    }
+
+    @Override
+    public List<KostEntity> findAllByOwnerId(String ownerId) throws SQLException {
+        return this.kostDao.findAllByOwnerId(ownerId);
     }
 }
