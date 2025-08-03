@@ -111,66 +111,47 @@ public class AdminCreateController implements Initializable {
     }
 
     /**
-     * Mengatur listener pada semua input field untuk validasi form.
+     * Menggabungkan data dari panel lokasi menjadi satu String.
+     * Format: "Provinsi, Kota/Kabupaten, Alamat Lengkap, Kode Pos"
+     * @return String lokasi yang sudah diformat.
      */
-//    private void setupFormValidationListener() {
-//        // Awalnya, nonaktifkan tombol Simpan
-//        simpanButton.setDisable(true);
-//
-//        // Buat satu listener yang akan digunakan oleh semua field
-//        ChangeListener<Object> validationListener = (observable, oldValue, newValue) -> {
-//            validateForm();
-//        };
-//
-//        // Pasang listener ke setiap properti dari field yang wajib diisi
-//        namaKosField.textProperty().addListener(validationListener);
-//        hargaKosField.textProperty().addListener(validationListener);
-//        deskripsiArea.textProperty().addListener(validationListener);
-//        provinsiComboBox.valueProperty().addListener(validationListener);
-//        kotaComboBox.valueProperty().addListener(validationListener);
-//        kodePosField.textProperty().addListener(validationListener);
-//        alamatArea.textProperty().addListener(validationListener);
-//        previewImageView.imageProperty().addListener(validationListener);
-//    }
+    public String getFormattedLocation() {
+        // Mengambil nilai dari setiap komponen UI
+        String provinsi = provinsiComboBox.getValue();
+        String kota = kotaComboBox.getValue();
+        String alamat = alamatArea.getText();
+        String kodePos = kodePosField.getText();
 
-    /**
-     * Memeriksa apakah semua field yang wajib diisi sudah terisi.
-     * Mengaktifkan atau menonaktifkan tombol Simpan berdasarkan hasilnya.
-     */
-//    private void validateForm() {
-//        boolean isNamaKosFilled = !namaKosField.getText().trim().isEmpty();
-//        boolean isHargaKosFilled = !hargaKosField.getText().trim().isEmpty();
-//        boolean isDeskripsiFilled = !deskripsiArea.getText().trim().isEmpty();
-//        boolean isProvinsiSelected = provinsiComboBox.getValue() != null;
-//        boolean isKotaSelected = kotaComboBox.getValue() != null;
-//        boolean isKodePosFilled = !kodePosField.getText().trim().isEmpty();
-//        boolean isAlamatFilled = !alamatArea.getText().trim().isEmpty();
-//        boolean isImageSelected = previewImageView.getImage() != null;
-//
-//        // Tombol Simpan akan aktif jika semua kondisi di atas terpenuhi
-//        boolean allFieldsFilled = isNamaKosFilled && isHargaKosFilled && isDeskripsiFilled &&
-//                isProvinsiSelected && isKotaSelected && isKodePosFilled &&
-//                isAlamatFilled && isImageSelected;
-//
-//        simpanButton.setDisable(!allFieldsFilled);
-//    }
+        // Menggunakan StringBuilder untuk efisiensi
+        StringBuilder locationBuilder = new StringBuilder();
 
-//    @FXML
-//    private void handleSimpan() {
-//        // Logika untuk menyimpan data ke database
-//        System.out.println("Tombol Simpan ditekan!");
-//        System.out.println("Nama Kos: " + namaKosField.getText());
-//        System.out.println("Gambar: " + selectedImageFile.getAbsolutePath());
-//        // ... ambil data lainnya dan proses ...
-//    }
-//
-//    @FXML
-//    private void handleBatal() {
-//        // Logika untuk membatalkan dan kembali ke halaman sebelumnya
-//        System.out.println("Tombol Batal ditekan!");
-//        // Contoh: mainController.loadPage("admin-dashboard.fxml");
-//    }
+        // Menambahkan setiap bagian jika tidak kosong
+        if (provinsi != null && !provinsi.isEmpty()) {
+            locationBuilder.append(provinsi);
+        }
 
+        if (kota != null && !kota.isEmpty()) {
+            if (locationBuilder.length() > 0) {
+                locationBuilder.append(", ");
+            }
+            locationBuilder.append(kota);
+        }
 
+        if (alamat != null && !alamat.trim().isEmpty()) {
+            if (locationBuilder.length() > 0) {
+                locationBuilder.append(", ");
+            }
+            locationBuilder.append(alamat.trim());
+        }
+
+        if (kodePos != null && !kodePos.trim().isEmpty()) {
+            if (locationBuilder.length() > 0) {
+                locationBuilder.append(", ");
+            }
+            locationBuilder.append(kodePos.trim());
+        }
+
+        return locationBuilder.toString();
+    }
 
 }
