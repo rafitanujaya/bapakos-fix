@@ -23,7 +23,7 @@
             prefWidth="1220"
             xmlns="http://javafx.com/javafx/21"
             xmlns:fx="http://javafx.com/fxml/1"
-            >
+            fx:controller="org.bapakos.controller.admin.AdminCreateKostController">
     <content>
         <VBox fx:id="mainContent" spacing="25">
             <padding>
@@ -64,7 +64,7 @@
                             </VBox>
                             <VBox spacing="5" HBox.hgrow="ALWAYS">
                                 <Label text="Kota/Kabupaten" styleClass="input-label" />
-                                <ComboBox fx:id="CityComboBox" promptText="Pilih Kota/Kabupaten" prefWidth="315" />
+                                <ComboBox fx:id="cityComboBox" promptText="Pilih Kota/Kabupaten" prefWidth="315" />
                             </VBox>
                         </HBox>
                         <VBox spacing="5">
