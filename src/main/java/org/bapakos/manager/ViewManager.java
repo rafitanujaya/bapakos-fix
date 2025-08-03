@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.bapakos.controller.LoginController;
 import org.bapakos.controller.RegisterController;
+import org.bapakos.controller.admin.AdminCreateKostController;
 import org.bapakos.controller.admin.AdminMainController;
 import org.bapakos.controller.user.UserMainController;
 
@@ -55,6 +56,7 @@ public class ViewManager {
             Parent root = loader.load();
 
             AdminMainController controller = loader.getController();
+            controller.setServiceManager(serviceManager);
             controller.setViewManager(this);
 
             Scene scene = new Scene(root);

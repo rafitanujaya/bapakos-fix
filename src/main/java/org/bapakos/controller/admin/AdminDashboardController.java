@@ -6,6 +6,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import org.bapakos.manager.ServiceManager;
+import org.bapakos.manager.ViewManager;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -17,15 +20,20 @@ public class AdminDashboardController implements Initializable {
     @FXML private Button createButton;
     @FXML private VBox rowsContainer;
 
-    // --- BAGIAN BARU (LANGKAH 1) ---
+
     // Variabel untuk menyimpan referensi ke controller utama
     private AdminMainController mainController;
+    private ServiceManager serviceManager;
 
     /**
      * Metode ini akan dipanggil oleh AdminMainController untuk memberikan referensinya.
      */
     public void setMainController(AdminMainController mainController) {
         this.mainController = mainController;
+    }
+
+    public void setServiceManager(ServiceManager serviceManager) {
+        this.serviceManager = serviceManager;
     }
     // ---------------------------------
 
