@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <!-- Root diubah menjadi ScrollPane agar konten bisa di-scroll -->
-<ScrollPane fitToWidth="true" prefHeight="720" prefWidth="1220" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.bapakos.controller.admin.AdminCreateController">>
+<ScrollPane fitToWidth="true" prefHeight="720" prefWidth="1220" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.bapakos.controller.admin.AdminCreateController">
     <content>
         <VBox fx:id="mainContent" spacing="25">
             <padding>
@@ -39,8 +39,8 @@
                     <TextField fx:id="hargaKosField" promptText="Contoh: 850000" />
                 </VBox>
                 <VBox spacing="5">
-                    <Label text="Deskripsi" styleClass="text-area" />
-                    <TextArea fx:id="deskripsiArea" promptText="Berikan deskripsi singkat mengenai properti Anda..." prefRowCount="4" />
+                    <Label text="Deskripsi" styleClass="input-label" />
+                    <TextArea fx:id="deskripsiArea" styleClass="text-area" promptText="Berikan deskripsi singkat mengenai properti Anda..." prefRowCount="4" />
                 </VBox>
             </VBox>
 
@@ -117,8 +117,8 @@
 
             <!-- Tombol Aksi -->
             <HBox spacing="10" alignment="CENTER_RIGHT">
-                <Button fx:id="batalButton" text="Batal" styleClass="cancel-button" onAction="#handleBatal"/>
-                <Button fx:id="simpanButton" text="Simpan" styleClass="create-button" onAction="#handleSimpan"/>
+                <Button fx:id="batalButton" text="Batal" styleClass="cancel-button"/>
+                <Button fx:id="simpanButton" text="Simpan" styleClass="create-button"/>
             </HBox>
         </VBox>
     </content>

@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <!-- Root element BorderPane dengan ukuran 1220x720 -->
-<BorderPane fx:id="rootPane" prefHeight="720.0" prefWidth="1220.0" styleClass="user-dashboard-root" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="rootPane" prefHeight="720.0" prefWidth="1220.0" styleClass="user-dashboard-root" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.bapakos.controller.user.UserMainController">
 
     <!-- ====================================================================== -->
     <!-- TOP BAR (Bagian Atas)                                                  -->

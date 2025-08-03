@@ -1,0 +1,188 @@
+/* ==========================================================================
+   1. GLOBAL & ROOT LAYOUT
+   ========================================================================== */
+
+.user-dashboard-root {
+    -fx-background-color: #F4F7FC; /* Warna latar belakang utama yang netral */
+    -fx-font-family: "System";
+}
+
+/* ==========================================================================
+   2. TOP BAR & SIDEBAR LAYOUT
+   ========================================================================== */
+
+.top-bar {
+    -fx-background-color: white;
+    -fx-border-color: #E2E8F0;
+    -fx-border-width: 0 0 1px 0; /* Garis tipis di bawah top bar */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.03), 10, 0, 0, 2);
+}
+
+.filter-sidebar {
+    -fx-background-color: white;
+    -fx-border-color: #E2E8F0;
+    -fx-border-width: 0 1px 0 0; /* Garis tipis di kanan sidebar */
+}
+
+.logo-text {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1E293B;
+}
+
+/* ==========================================================================
+   3. KOS CARD & DETAIL POPUP
+   ========================================================================== */
+
+/* Kontainer utama untuk setiap kartu kos */
+.kos-card-user {
+    -fx-background-color: white;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 3);
+    -fx-cursor: hand;
+    -fx-background-radius: 20px;
+}
+
+/* Panel teks di bagian bawah kartu */
+.kos-card-text-panel {
+    -fx-background-color: linear-gradient(from 0% 0% to 0% 100%, transparent 0%, rgba(0,0,0,0.7) 100%);
+    -fx-alignment: bottom-left;
+    -fx-pref-height: 120px;
+}
+
+/* Panel utama untuk popup detail */
+.kos-detail-panel {
+    -fx-background-color: white;
+    -fx-background-radius: 16px;
+    -fx-border-color: #E2E8F0;
+    -fx-border-width: 1px;
+    -fx-border-radius: 16px;
+}
+
+/* ==========================================================================
+   4. TYPOGRAPHY (LABELS & TITLES)
+   ========================================================================== */
+
+.filter-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1E293B;
+}
+
+.filter-label {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #475569;
+    -fx-padding: 10px 0 0 0;
+}
+
+.kos-card-nama { -fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white; }
+.kos-card-alamat { -fx-font-size: 13px; -fx-text-fill: #E2E8F0; }
+.kos-card-harga { -fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #A7F3D0; }
+
+.kos-detail-nama { -fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #1E293B; }
+.kos-detail-harga { -fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #2563EB; }
+.kos-detail-alamat { -fx-font-size: 14px; -fx-text-fill: #64748B; }
+.kos-detail-deskripsi { -fx-font-size: 14px; -fx-text-fill: #475569; -fx-line-spacing: 4px; }
+.kos-detail-subheader { -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #475569; }
+
+/* ==========================================================================
+   5. CONTROLS (BUTTONS, TEXTFIELDS, COMBOBOX)
+   ========================================================================== */
+
+/* Tombol Aksi di Top Bar */
+.top-bar-action-button {
+    -fx-background-color: transparent;
+    -fx-padding: 8px;
+    -fx-background-radius: 50%;
+    -fx-cursor: hand;
+}
+.top-bar-action-button:hover { -fx-background-color: #F1F5F9; }
+
+/* Kolom pencarian di sidebar */
+.search-field {
+    -fx-background-radius: 8px 0 0 8px;
+    -fx-border-color: #E2E8F0;
+    -fx-border-width: 1.5px 0 1.5px 1.5px;
+    -fx-font-size: 14px;
+    -fx-padding: 7px 12px;
+}
+.search-field:focused { -fx-border-color: #2563EB; }
+
+/* Tombol cari di sebelah search field */
+.create-button {
+    -fx-background-color: #2563EB;
+    -fx-background-radius: 0 8px 8px 0;
+    -fx-padding: 8px 12px;
+    -fx-cursor: hand;
+}
+.create-button:hover { -fx-background-color: #1D4ED8; }
+
+/* Input filter di sidebar */
+.filter-sidebar .text-field, .filter-sidebar .combo-box {
+    -fx-background-color: #F8FAFC;
+    -fx-border-color: #E2E8F0;
+    -fx-border-width: 1.5px;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-font-size: 14px;
+}
+
+/* Tombol utama (Cari, Order) */
+.filter-search-button, .kos-detail-button {
+    -fx-background-color: #2563EB;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8px;
+    -fx-padding: 10px 0;
+    -fx-cursor: hand;
+}
+.filter-search-button:hover, .kos-detail-button:hover { -fx-background-color: #1D4ED8; }
+.kos-detail-button { -fx-font-size: 16px; -fx-padding: 12px 0; -fx-background-radius: 12px;}
+
+/* Tombol sekunder (Refresh) */
+.refresh-button {
+    -fx-background-color: #F1F5F9;
+    -fx-text-fill: #475569;
+    -fx-border-color: #E2E8F0;
+    -fx-border-width: 1.5px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-padding: 10px 0;
+    -fx-cursor: hand;
+}
+.refresh-button:hover { -fx-background-color: #E2E8F0; }
+
+/* Tombol Logout */
+.logout-button {
+    -fx-background-color: #FEE2E2;
+    -fx-text-fill: #B91C1C;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+    -fx-padding: 10px 0;
+}
+.logout-button:hover { -fx-background-color: #FECACA; }
+
+/* ==========================================================================
+   6. SPECIAL COMPONENTS
+   ========================================================================== */
+
+/* ScrollPane */
+.no-border-scroll-pane { -fx-background-color: transparent; -fx-background-insets: 0; -fx-padding: 0; }
+.no-border-scroll-pane .viewport { -fx-background-color: transparent; }
+.scroll-bar:vertical, .scroll-bar:horizontal { -fx-background-color: transparent; }
+.scroll-bar .thumb { -fx-background-color: #CBD5E1; -fx-background-radius: 8px; }
+.scroll-bar .track { -fx-background-color: transparent; }
+
+/* Separator */
+.separator .line { -fx-border-color: #F1F5F9; -fx-border-width: 1px; }
+
+/* Fasilitas Item */
+.facility-item {
+    -fx-background-color: #F1F5F9;
+    -fx-padding: 5px 10px;
+    -fx-background-radius: 8px;
+    -fx-alignment: center-left;
+}
+.facility-item .label { -fx-font-size: 13px; -fx-text-fill: #334155; }
