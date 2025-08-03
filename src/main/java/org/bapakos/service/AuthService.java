@@ -7,5 +7,5 @@ import java.sql.SQLException;
 
 public interface AuthService {
     public Response register(String username, String password, UserEntity.Role role) throws SQLException;
-    public boolean login(String username, String password) throws SQLException;
+    public Response login(String username, String password) throws SQLException;
 }

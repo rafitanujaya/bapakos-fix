@@ -37,7 +37,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public UserEntity findByUsername(String username) throws SQLException {
-        String query = "SELECT id, username, password, role, created_at FROM users WHERE username = ?";
+        String query = "SELECT id, username, password, roles, created_at FROM users WHERE username = ?";
         try (PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setString(1, username);
             ResultSet rs = ps.executeQuery();

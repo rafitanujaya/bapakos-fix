@@ -3,6 +3,7 @@ package org.bapakos.service;
 import org.bapakos.dao.UserDao;
 import org.bapakos.model.dto.Response;
 import org.bapakos.model.entity.UserEntity;
+import org.bapakos.session.Session;
 import org.bapakos.util.PasswordUtil;
 
 import java.sql.SQLException;
@@ -32,7 +33,15 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public boolean login(String username, String password) throws SQLException {
-        return false;
+    public Response login(String username, String password) throws SQLException {
+        UserEntity user = userDao.findByUsername(username);
+        if(user == null) {
+            return new Response(false, "Username atau Password salah");
+        }
+        if(!PasswordUtil.checkPassword(password, user.getPassword())) {
+            return new Response(false, "Username atau Password salah");
+        }
+        Session.set(user);
+        return new Response(true, "Login Berhasil Dilakukan");
     }
 }
