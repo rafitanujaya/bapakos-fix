@@ -17,7 +17,7 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class AdminMainController implements Initializable {
+public class AdminMainController {
 
     @FXML
     private BorderPane root;
@@ -48,8 +48,8 @@ public class AdminMainController implements Initializable {
         this.serviceManager = serviceManager;
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    @FXML
+    public void initialize() {
         profileNameLabel.setText("Admin BapaKos");
 
         loadPage("admin-dashboard.fxml");
@@ -77,11 +77,12 @@ public class AdminMainController implements Initializable {
 
             if (loadedController instanceof AdminDashboardController controller) {
                 controller.setMainController(this);
-                controller.setServiceManager(serviceManager); // Inject here
+                controller.setServiceManager(serviceManager);
             }
 
             if (loadedController instanceof AdminCreateKostController) {
                 ((AdminCreateKostController) loadedController).setKostService(serviceManager.getKostService());
+                ((AdminCreateKostController) loadedController).setViewManager(viewManager);
             }
             // Tambahkan untuk controller lain jika perlu
 

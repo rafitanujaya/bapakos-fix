@@ -15,7 +15,7 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class UserMainController implements Initializable {
+public class UserMainController {
 
     @FXML
     private BorderPane rootPane;
@@ -39,8 +39,8 @@ public class UserMainController implements Initializable {
         this.viewManager = viewManager;
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    @FXML
+    public void initialize() {
         // Muat halaman dashboard sebagai tampilan awal
         loadPage("user-dashboard.fxml");
 
