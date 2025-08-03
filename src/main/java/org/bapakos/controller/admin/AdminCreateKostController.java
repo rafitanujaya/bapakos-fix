@@ -8,13 +8,17 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import org.bapakos.controller.location.Location;
+import org.bapakos.model.dto.CreateKostDto;
 import org.bapakos.model.dto.Response;
+import org.bapakos.model.entity.FacilityEntity;
 import org.bapakos.model.entity.KostEntity;
 import org.bapakos.service.KostService;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AdminCreateKostController {
 
@@ -132,6 +136,22 @@ public class AdminCreateKostController {
             String description = descriptionField.getText();
             String address = getFormattedLocation();
 
+            List<FacilityEntity> facilities = new ArrayList<>();
+
+            if (acCheckBox.isSelected()) {
+                facilities.add(new FacilityEntity("1", "AC"));
+            }
+            if (kmlCheckBox.isSelected()) {
+                facilities.add(new FacilityEntity("2", "Kamar Mandi Luar"));
+            }
+            if (kmdCheckBox.isSelected()) {
+                facilities.add(new FacilityEntity("3", "Kamar Mandi Dalam"));
+            }
+            if (wifiCheckBox.isSelected()) {
+                facilities.add(new FacilityEntity("4", "WiFi"));
+            }
+
+
             System.out.println("Name: " + name);
             System.out.println("Price: " + price);
             System.out.println("Description: " + description);
@@ -173,12 +193,13 @@ public class AdminCreateKostController {
                 return;
             }
 
-            KostEntity kost = new KostEntity();
+            CreateKostDto kost = new CreateKostDto();
             kost.setName(name);
             kost.setPrice(price);
             kost.setDescription(description);
             kost.setLocation(address);
             kost.setImage(imageData);
+            kost.setFacilities(facilities);
 
             Response result = kostService.create(kost);
 

@@ -12,6 +12,7 @@ public class Response {
     public boolean isSuccess() {
         return success;
     }
+
     public String getMessage() {
         return this.message;
     }

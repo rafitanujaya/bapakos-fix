@@ -1,5 +1,6 @@
 package org.bapakos.dao;
 
+import org.bapakos.model.entity.FacilityEntity;
 import org.bapakos.model.entity.KostEntity;
 
 import java.sql.Connection;
@@ -7,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.UUID;
 
 public class KostDaoImpl implements KostDao {
     private Connection conn;
@@ -27,6 +29,25 @@ public class KostDaoImpl implements KostDao {
             ps.setDouble(6, kost.getPrice());
             ps.setBytes(7, kost.getImage());
             return ps.executeUpdate() > 0;
+        }
+    }
+
+    @Override
+    public boolean addFacility(List<FacilityEntity> facility, String kostId) throws SQLException {
+        if (facility == null || facility.isEmpty()) {
+            return true;
+        }
+
+        String query = "INSERT INTO kost_facilities(id, kost_id, facility_id) VALUES (?, ?, ?)";
+        try (PreparedStatement ps = conn.prepareStatement(query)) {
+            for (FacilityEntity facilityEntity : facility) {
+                ps.setString(1, UUID.randomUUID().toString());
+                ps.setString(2, kostId);
+                ps.setString(3, facilityEntity.getId());
+                ps.addBatch();
+            }
+            ps.executeBatch();
+            return true;
         }
     }
 

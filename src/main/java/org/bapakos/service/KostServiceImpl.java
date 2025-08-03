@@ -1,6 +1,7 @@
 package org.bapakos.service;
 
 import org.bapakos.dao.KostDao;
+import org.bapakos.model.dto.CreateKostDto;
 import org.bapakos.model.dto.Response;
 import org.bapakos.model.entity.KostEntity;
 import org.bapakos.session.Session;
@@ -15,14 +16,22 @@ public class KostServiceImpl implements KostService {
     }
 
     @Override
-    public Response create(KostEntity kost) throws SQLException {
+    public Response create(CreateKostDto kost) throws SQLException {
         if(this.kostDao.findByName(kost.getName())) {
             return new Response(false, "Nama kost sudah digunakan");
         }
 
-        kost.setId(UUID.randomUUID().toString());
-        kost.setOwnerId(Session.get().getId());
-        kostDao.create(kost);
+        KostEntity newKost = new KostEntity();
+        newKost.setId(UUID.randomUUID().toString());
+        newKost.setName(kost.getName());
+        newKost.setOwnerId(Session.get().getId());
+        newKost.setLocation(kost.getLocation());
+        newKost.setImage(kost.getImage());
+        newKost.setDescription(kost.getDescription());
+        newKost.setPrice(kost.getPrice());
+        kostDao.create(newKost);
+        kostDao.addFacility(kost.getFacilities(), newKost.getId());
+
         return new Response(true, "Kost Berhasil Dibuat");
     }
 }
