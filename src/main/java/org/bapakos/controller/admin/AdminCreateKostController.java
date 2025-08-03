@@ -36,8 +36,6 @@ public class AdminCreateKostController {
     @FXML private CheckBox kmdCheckBox;
     @FXML private CheckBox wifiCheckBox;
 
-    private KostService kostService;
-    private ViewManager viewManager;
     private File selectedImageFile;
     private byte[] imageData;
 
@@ -46,19 +44,13 @@ public class AdminCreateKostController {
     @FXML private ImageView previewImageView;
     @FXML private Button deleteImageButton;
 
-    // Tambahkan referensi ke MainController
     private AdminMainController mainController;
+    private KostService kostService;
+    private ViewManager viewManager;
 
-    public void setMainController(AdminMainController mainController) {
-        this.mainController = mainController;
-    }
-
-
+    public void setMainController(AdminMainController mainController) { this.mainController = mainController; }
     public void setViewManager(ViewManager viewManager) {this.viewManager = viewManager;}
-
-    public void setKostService(KostService kostService) {
-        this.kostService = kostService;
-    }
+    public void setKostService(KostService kostService) { this.kostService = kostService; }
 
     @FXML
     public void initialize() {

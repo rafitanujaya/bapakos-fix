@@ -8,6 +8,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import org.bapakos.controller.admin.AdminBookingController;
+import org.bapakos.controller.admin.AdminCreateKostController;
+import org.bapakos.controller.admin.AdminDashboardController;
+import org.bapakos.controller.admin.AdminTransactionController;
+import org.bapakos.manager.ServiceManager;
 import org.bapakos.manager.ViewManager; // Pastikan import ini benar
 
 import java.io.IOException;
@@ -15,7 +20,7 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class UserMainController implements Initializable {
+public class UserMainController {
 
     @FXML
     private BorderPane rootPane;
@@ -33,14 +38,14 @@ public class UserMainController implements Initializable {
     // @FXML private ComboBox<String> provinsiComboBox;
 
     private ViewManager viewManager;
+    private ServiceManager serviceManager;
 
     // Metode ini digunakan untuk menerima ViewManager dari LoginController/Main
-    public void setViewManager(ViewManager viewManager) {
-        this.viewManager = viewManager;
-    }
+    public void setViewManager(ViewManager viewManager) { this.viewManager = viewManager; }
+    public void setServiceManager(ServiceManager serviceManager) { this.serviceManager = serviceManager; }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    @FXML
+    public void initialize() {
         // Muat halaman dashboard sebagai tampilan awal
         loadPage("user-dashboard.fxml");
 
@@ -56,10 +61,8 @@ public class UserMainController implements Initializable {
      */
     public void loadPage(String fxmlFileName) {
         try {
-            // Pastikan path ke view user sudah benar
             String fxmlPath = "/view/" + fxmlFileName;
             URL resourceUrl = getClass().getResource(fxmlPath);
-
             if (resourceUrl == null) {
                 System.err.println("Error: File FXML tidak ditemukan di path: " + fxmlPath);
                 return;
@@ -68,12 +71,22 @@ public class UserMainController implements Initializable {
             FXMLLoader loader = new FXMLLoader(resourceUrl);
             Parent page = loader.load();
 
-            // Penting: Jika halaman konten perlu berkomunikasi balik,
-            // Anda bisa memberikan referensi controller ini kepadanya.
-            // Object loadedController = loader.getController();
-            // if (loadedController instanceof UserDashboardController) {
-            //     ((UserDashboardController) loadedController).setMainController(this);
-            // }
+            Object controller = loader.getController();
+
+//            if (controller instanceof AdminDashboardController c) {
+//                c.setMainController(this);
+//                c.setServiceManager(serviceManager);
+//            } else if (controller instanceof AdminCreateKostController c) {
+//                c.setMainController(this);
+//                c.setKostService(serviceManager.getKostService());
+//                c.setViewManager(viewManager);
+//            } else if (controller instanceof AdminTransactionController c) {
+//                c.setServiceManager(serviceManager);
+//                c.setViewManager(viewManager);
+//            } else if (controller instanceof AdminBookingController c) {
+//                c.setServiceManager(serviceManager);
+//                c.setViewManager(viewManager);
+//            }
 
             rootPane.setCenter(page);
 
