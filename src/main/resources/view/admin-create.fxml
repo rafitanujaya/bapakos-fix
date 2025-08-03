@@ -23,7 +23,7 @@
             prefWidth="1220"
             xmlns="http://javafx.com/javafx/21"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="org.bapakos.controller.admin.AdminCreateController">
+            >
     <content>
         <VBox fx:id="mainContent" spacing="25">
             <padding>
@@ -37,15 +37,15 @@
                 </padding>
                 <VBox spacing="5">
                     <Label text="Nama Kos" styleClass="input-label" />
-                    <TextField fx:id="namaKosField" promptText="Contoh: Kos Melati Indah" />
+                    <TextField fx:id="nameField" promptText="Contoh: Kos Melati Indah" />
                 </VBox>
                 <VBox spacing="5">
                     <Label text="Harga Kos (per bulan)" styleClass="input-label" />
-                    <TextField fx:id="hargaKosField" promptText="Contoh: 850000" />
+                    <TextField fx:id="priceField" promptText="Contoh: 850000" />
                 </VBox>
                 <VBox spacing="5">
                     <Label text="Deskripsi" styleClass="input-label" />
-                    <TextArea fx:id="deskripsiArea" styleClass="text-area" promptText="Berikan deskripsi singkat mengenai properti Anda..." prefRowCount="4" />
+                    <TextArea fx:id="descriptionField" styleClass="text-area" promptText="Berikan deskripsi singkat mengenai properti Anda..." prefRowCount="4" />
                 </VBox>
             </VBox>
 
@@ -60,20 +60,20 @@
                         <HBox spacing="20">
                             <VBox spacing="5" HBox.hgrow="ALWAYS">
                                 <Label text="Provinsi" styleClass="input-label" />
-                                <ComboBox fx:id="provinsiComboBox" promptText="Pilih Provinsi" prefWidth="315" />
+                                <ComboBox fx:id="provinceComboBox" promptText="Pilih Provinsi" prefWidth="315" />
                             </VBox>
                             <VBox spacing="5" HBox.hgrow="ALWAYS">
                                 <Label text="Kota/Kabupaten" styleClass="input-label" />
-                                <ComboBox fx:id="kotaComboBox" promptText="Pilih Kota/Kabupaten" prefWidth="315" />
+                                <ComboBox fx:id="CityComboBox" promptText="Pilih Kota/Kabupaten" prefWidth="315" />
                             </VBox>
                         </HBox>
                         <VBox spacing="5">
                             <Label text="Kode Pos" styleClass="input-label" />
-                            <TextField fx:id="kodePosField" promptText="Contoh: 17111" />
+                            <TextField fx:id="CodePosField" promptText="Contoh: 17111" />
                         </VBox>
                         <VBox spacing="5">
                             <Label text="Alamat" styleClass="input-label" />
-                            <TextArea fx:id="alamatArea" promptText="Nama jalan, nomor rumah, kecamatan, desa/kelurahan, RT/RW..." prefRowCount="4" />
+                            <TextArea fx:id="addressfield" promptText="Nama jalan, nomor rumah, kecamatan, desa/kelurahan, RT/RW..." prefRowCount="4" />
                         </VBox>
                     </VBox>
                     <VBox spacing="10" prefWidth="300">
@@ -105,17 +105,9 @@
                 <FlowPane hgap="30" vgap="15">
                     <children>
                         <CheckBox fx:id="acCheckBox" text="AC" />
-                        <CheckBox fx:id="kamarMandiDalamCheckBox" text="Kamar Mandi Dalam" />
-                        <CheckBox fx:id="kamarMandiLuarCheckBox" text="Kamar Mandi Luar" />
-                        <CheckBox fx:id="mejaCheckBox" text="Meja" />
-                        <CheckBox fx:id="kursiCheckBox" text="Kursi" />
-                        <CheckBox fx:id="klosetDudukCheckBox" text="Kloset Duduk" />
-                        <CheckBox fx:id="klosetJongkokCheckBox" text="Kloset Jongkok" />
+                        <CheckBox fx:id="kmdCheckBox" text="Kamar Mandi Dalam" />
+                        <CheckBox fx:id="kmlCheckBox" text="Kamar Mandi Luar" />
                         <CheckBox fx:id="wifiCheckBox" text="Wifi" />
-                        <CheckBox fx:id="listrikCheckBox" text="Listrik" />
-                        <CheckBox fx:id="penjagaKosCheckBox" text="Penjaga Kos" />
-                        <CheckBox fx:id="parkirMotorCheckBox" text="Parkir Motor" />
-                        <CheckBox fx:id="parkirMobilCheckBox" text="Parkir Mobil" />
                     </children>
                 </FlowPane>
             </VBox>
