@@ -105,12 +105,7 @@ public class AdminMainController {
      */
     private void handleLogout() {
         try {
-            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/view/login.fxml")));
-            Parent loginRoot = loader.load();
-
-            Scene currentScene = root.getScene();
-            currentScene.setRoot(loginRoot);
-
+            viewManager.loginScene();
         } catch (IOException e) {
             System.err.println("Gagal memuat halaman login.");
             e.printStackTrace();
