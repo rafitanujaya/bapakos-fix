@@ -1,6 +1,6 @@
 package org.bapakos.controller.admin; // Sesuaikan dengan path paket Anda
 
-import javafx.beans.value.ChangeListener;
+import org.bapakos.controller.location.Location;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -12,6 +12,8 @@ import javafx.stage.FileChooser;
 
 import java.io.File;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class AdminCreateController implements Initializable {
@@ -39,34 +41,36 @@ public class AdminCreateController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //setupLocationComboBoxes();
+        setupLocationComboBoxes();
         setupImagePicker();
         //setupFormValidationListener();
     }
 
-    /**
-     * Mengatur logika untuk ComboBox Provinsi dan Kota/Kabupaten.
-     */
-//    private void setupLocationComboBoxes() {
-//        // Isi ComboBox provinsi dengan data dari kelas Location
-//        provinsiComboBox.setItems(Location.getProvinsiJawa());
-//
-//        // Awalnya, nonaktifkan ComboBox kota
-//        kotaComboBox.setDisable(true);
-//
-//        // Tambahkan listener ke ComboBox provinsi
-//        provinsiComboBox.getSelectionModel().selectedItemProperty().addListener((options, oldValue, newValue) -> {
-//            if (newValue == null) {
-//                // Jika tidak ada provinsi yang dipilih, nonaktifkan dan kosongkan ComboBox kota
-//                kotaComboBox.setDisable(true);
-//                kotaComboBox.getItems().clear();
-//            } else {
-//                // Jika provinsi dipilih, aktifkan ComboBox kota dan isi dengan data yang sesuai
-//                kotaComboBox.setDisable(false);
-//                kotaComboBox.setItems(Location.getKabupatenPerProvinsi().get(newValue));
-//            }
-//        });
-//    }
+    private void setupLocationComboBoxes() {
+        // 1. Isi ComboBox provinsi dengan data dari kelas Location
+        provinsiComboBox.setItems(Location.getProvinsiJawa());
+
+        // 2. Awalnya, nonaktifkan ComboBox kota
+        kotaComboBox.setDisable(true);
+
+        // 3. Tambahkan "listener" untuk mendeteksi perubahan pada ComboBox provinsi
+        provinsiComboBox.getSelectionModel().selectedItemProperty().addListener((options, oldValue, newValue) -> {
+            if (newValue == null) {
+                // Jika tidak ada provinsi yang dipilih, nonaktifkan dan kosongkan ComboBox kota.
+                kotaComboBox.setDisable(true);
+                kotaComboBox.getItems().clear();
+                kotaComboBox.setPromptText("Pilih Kota/Kabupaten");
+            } else {
+                // Jika provinsi dipilih, aktifkan ComboBox kota
+                kotaComboBox.setDisable(false);
+                // Isi ComboBox kota dengan daftar yang sesuai dari Map di kelas Location
+                kotaComboBox.setItems(Location.getKabupatenPerProvinsi().get(newValue));
+                // Hapus pilihan sebelumnya agar tidak membingungkan
+                kotaComboBox.getSelectionModel().clearSelection();
+                kotaComboBox.setPromptText("Pilih Kota/Kabupaten");
+            }
+        });
+    }
 
     /**
      * Mengatur logika untuk memilih gambar.
@@ -167,30 +171,6 @@ public class AdminCreateController implements Initializable {
 //        // Contoh: mainController.loadPage("admin-dashboard.fxml");
 //    }
 
-//    private void setupLocationComboBoxes() {
-//        // 1. Isi ComboBox provinsi dengan data dari kelas Location
-//        provinsiComboBox.setItems(Location.getProvinsiJawa());
-//
-//        // 2. Awalnya, nonaktifkan ComboBox kota
-//        kotaComboBox.setDisable(true);
-//
-//        // 3. Tambahkan listener untuk mendeteksi perubahan pada ComboBox provinsi
-//        provinsiComboBox.getSelectionModel().selectedItemProperty().addListener((options, oldValue, newValue) -> {
-//            if (newValue == null) {
-//                // Jika tidak ada provinsi yang dipilih (misalnya, pilihan dikosongkan),
-//                // nonaktifkan dan kosongkan ComboBox kota.
-//                kotaComboBox.setDisable(true);
-//                kotaComboBox.getItems().clear();
-//                kotaComboBox.setPromptText("Pilih Kota/Kabupaten");
-//            } else {
-//                // Jika provinsi dipilih, aktifkan ComboBox kota
-//                kotaComboBox.setDisable(false);
-//                // Isi ComboBox kota dengan daftar yang sesuai dari Map
-//                kotaComboBox.setItems(Location.getKabupatenPerProvinsi().get(newValue));
-//                // Hapus pilihan sebelumnya agar tidak membingungkan
-//                kotaComboBox.getSelectionModel().clearSelection();
-//                kotaComboBox.setPromptText("Pilih Kota/Kabupaten");
-//            }
-//        });
-//    }
+
+
 }

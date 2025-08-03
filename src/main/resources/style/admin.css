@@ -138,7 +138,7 @@
    6. INPUT CONTROLS (TEXTFIELD, COMBOBOX, CHECKBOX)
    ========================================================================== */
 
-.text-field, .text-area, .combo-box {
+.text-field, .text-area {
     -fx-font-size: 14px;
     -fx-background-color: #F8FAFC;
     -fx-border-color: #E2E8F0;
@@ -146,6 +146,16 @@
     -fx-background-radius: 8px;
     -fx-border-radius: 8px;
     -fx-padding: 8px 12px;
+}
+
+.combo-box {
+    -fx-font-size: 13px;
+    -fx-background-color: #F8FAFC;
+    -fx-border-color: #E2E8F0;
+    -fx-border-width: 1.5px;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-padding: 5px 10px 5px 12px;
 }
 
 .text-field:focused, .text-area:focused, .combo-box:focused {
