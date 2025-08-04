@@ -11,10 +11,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import org.bapakos.manager.ServiceManager;
+import org.bapakos.manager.ViewManager;
 import org.bapakos.model.dto.Response;
 import org.bapakos.model.entity.KostEntity;
 import org.bapakos.model.entity.UserEntity;
-import org.bapakos.service.BookingServiceImpl;
+import org.bapakos.service.BookingService;
 import org.bapakos.session.Session;
 
 public class DetailPopupController {
@@ -29,13 +31,20 @@ public class DetailPopupController {
     @FXML private ImageView mapImageView;
     @FXML private Button orderButton;
 
-    private BookingServiceImpl bookingService;
+    private BookingService bookingService;
+    private ViewManager viewManager;
+    private ServiceManager serviceManager;
     private KostEntity kos;
 
-    public void setBookingService(BookingServiceImpl bookingService) {
+    public void setBookingService(BookingService bookingService) {
         this.bookingService = bookingService;
     }
-
+    public void setViewManager(ViewManager viewManager) {
+        this.viewManager = viewManager;
+    }
+    public void setServiceManager(ServiceManager serviceManager) {
+        this.serviceManager = serviceManager;
+    }
 
     public void setKos(KostEntity kos) {
         this.kos = kos;
@@ -63,16 +72,6 @@ public class DetailPopupController {
             }
         }
 
-//        // Contoh fasilitas dummy
-//        fasilitasFlowPane.getChildren().clear();
-//        if (kos.getFacilities() != null) {
-//            for (String fasilitas : kos.getFacilities()) {
-//                Label label = new Label(fasilitas);
-//                label.getStyleClass().add("kos-detail-fasilitas");
-//                fasilitasFlowPane.getChildren().add(label);
-//            }
-//        }
-
         // Order Button
         orderButton.setOnAction(e -> {
             System.out.println("Order kos: " + kos.getName());
@@ -82,6 +81,9 @@ public class DetailPopupController {
 
     public void handleOrderNow() {
         try {
+            System.out.println(bookingService);
+            System.out.println(kos.getId());
+            System.out.println(Session.get());
             if (bookingService == null || kos.getId() == null || Session.get() == null) {
                 showAlert(Alert.AlertType.ERROR, "Kesalahan", null, "Data booking tidak lengkap.");
                 return;

@@ -10,6 +10,7 @@ import org.bapakos.controller.admin.AdminCreateKostController;
 import org.bapakos.controller.admin.AdminDashboardController;
 import org.bapakos.controller.admin.AdminMainController;
 import org.bapakos.controller.user.UserMainController;
+import org.bapakos.service.BookingServiceImpl;
 
 import java.io.IOException;
 
@@ -17,9 +18,11 @@ public class ViewManager {
     private final Stage primaryStage;
     private final ServiceManager serviceManager;
 
+
     public ViewManager(Stage primaryStage) {
         this.primaryStage = primaryStage;
         this.serviceManager = new ServiceManager();
+
     }
 
     public void registerScene () throws IOException {
@@ -80,6 +83,7 @@ public class ViewManager {
             UserMainController controller = loader.getController();
             controller.setViewManager(this);
             controller.setServiceManager(serviceManager);
+            controller.setBookingService(serviceManager.getBookingService());
             controller.initAfterInject();
 
             Scene scene = new Scene(root);

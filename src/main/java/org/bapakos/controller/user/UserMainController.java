@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import org.bapakos.manager.ServiceManager;
 import org.bapakos.manager.ViewManager; // Pastikan import ini benar
 import org.bapakos.model.entity.KostEntity;
+import org.bapakos.service.BookingService;
 import org.bapakos.service.KostService;
 
 import java.io.IOException;
@@ -41,12 +42,14 @@ public class UserMainController {
     private ViewManager viewManager;
     private ServiceManager serviceManager;
     private UserDashboardController userDashboardController;
+    private BookingService bookingService;
     private KostService kostService;
 
     public void setViewManager(ViewManager viewManager) { this.viewManager = viewManager; }
     public void setServiceManager(ServiceManager serviceManager) { this.serviceManager = serviceManager; }
     public void setKostService(KostService kostService) { this.kostService = kostService; }
     public void setUserDashboardController(UserDashboardController controller) { this.userDashboardController = controller; }
+    public void setBookingService(BookingService bookingService) { this.bookingService = bookingService; }
 
     @FXML
     public void initialize() {
@@ -82,6 +85,7 @@ public class UserMainController {
              if (loadedController instanceof UserDashboardController c) {
                  c.setMainController(this);
                  c.setViewManager(viewManager);
+                 c.setBookingService(bookingService);
                  c.setServiceManager(serviceManager);
                  c.initAfterInject(serviceManager);
 

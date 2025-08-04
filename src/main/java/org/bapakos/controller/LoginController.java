@@ -77,7 +77,7 @@ public class LoginController {
                 alert.setHeaderText(null);
                 alert.setContentText(result.getMessage());
                 alert.showAndWait();
-                viewManager.userScene();
+                viewManager.adminScene();
 
             } else {
                 Alert alert = new Alert(Alert.AlertType.WARNING);

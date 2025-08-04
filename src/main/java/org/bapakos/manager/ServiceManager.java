@@ -41,5 +41,6 @@ public class ServiceManager {
         return authService;
     }
     public KostService getKostService() { return kostService; }
+    public BookingService getBookingService() { return bookingService; }
 }
 
