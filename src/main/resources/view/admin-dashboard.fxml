@@ -34,8 +34,8 @@
                 <Insets top="20" right="20" bottom="20" left="20" />
             </padding>
             <Label styleClass="stat-title" text="Total Revenue" />
-            <Label styleClass="stat-value" text="Rp 9.000.000,00" />
-            <Label styleClass="stat-subtext" text="+7.5% dari bulan lalu" />
+            <Label styleClass="stat-value" text="Rp 0,00" />
+            <Label styleClass="stat-subtext" text="0% dari bulan lalu" />
         </VBox>
         <!-- Blok Statistik 2 -->
         <VBox styleClass="stat-block" spacing="5" HBox.hgrow="ALWAYS">
@@ -43,8 +43,8 @@
                 <Insets top="20" right="20" bottom="20" left="20" />
             </padding>
             <Label styleClass="stat-title" text="Jumlah Kos Dimiliki" />
-            <Label styleClass="stat-value" text="12" />
-            <Label styleClass="stat-subtext" text="+2 kos baru" />
+            <Label styleClass="stat-value" text="0" />
+            <Label styleClass="stat-subtext" text="0 kos baru" />
         </VBox>
         <!-- Blok Statistik 3 -->
         <VBox styleClass="stat-block" spacing="5" HBox.hgrow="ALWAYS">
@@ -52,8 +52,8 @@
                 <Insets top="20" right="20" bottom="20" left="20" />
             </padding>
             <Label styleClass="stat-title" text="Jumlah Transaksi" />
-            <Label styleClass="stat-value" text="89" />
-            <Label styleClass="stat-subtext" text="5 transaksi berhasil" />
+            <Label styleClass="stat-value" text="0" />
+            <Label styleClass="stat-subtext" text="0 transaksi berhasil" />
         </VBox>
     </HBox>
 

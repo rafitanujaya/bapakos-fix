@@ -14,6 +14,7 @@ import org.bapakos.manager.ViewManager; // Pastikan import ini benar
 import org.bapakos.model.entity.KostEntity;
 import org.bapakos.service.BookingService;
 import org.bapakos.service.KostService;
+import org.bapakos.session.Session;
 
 import java.io.IOException;
 import java.net.URL;
@@ -111,7 +112,7 @@ public class UserMainController {
         try {
             // Dapatkan stage saat ini
             Stage currentStage = (Stage) rootPane.getScene().getWindow();
-
+            Session.clear();
             // Muat ulang scene login menggunakan ViewManager jika ada,
             // atau muat manual jika tidak ada.
             if (viewManager != null) {

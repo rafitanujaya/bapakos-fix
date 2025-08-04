@@ -129,6 +129,7 @@ public class AdminMainController {
     private void handleLogout() {
         try {
             viewManager.loginScene();
+            Session.clear();
         } catch (IOException e) {
             System.err.println("Gagal memuat halaman login.");
             e.printStackTrace();

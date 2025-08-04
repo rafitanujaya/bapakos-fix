@@ -8,7 +8,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import org.bapakos.manager.ViewManager;
 import org.bapakos.model.dto.Response;
+import org.bapakos.model.entity.UserEntity;
 import org.bapakos.service.AuthService;
+import org.bapakos.session.Session;
 
 import java.sql.SQLException;
 
@@ -77,8 +79,13 @@ public class LoginController {
                 alert.setHeaderText(null);
                 alert.setContentText(result.getMessage());
                 alert.showAndWait();
-                viewManager.adminScene();
-
+                UserEntity user = Session.get();
+                System.out.println(user.getRole());
+                if(user.getRole().toString().equalsIgnoreCase("pemilik")) {
+                    viewManager.adminScene();
+                } else {
+                    viewManager.userScene();
+                }
             } else {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Login Gagal");

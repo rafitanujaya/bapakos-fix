@@ -52,7 +52,7 @@
                 <VBox.margin>
                     <Insets top="12"/>
                 </VBox.margin>
-                <Button onAction="#handleLogin" text="Daftar" styleClass="form-button" maxWidth="Infinity"/>
+                <Button onAction="#handleLogin" text="Masuk" styleClass="form-button" maxWidth="Infinity"/>
             </VBox>
 
             <TextFlow styleClass="link-text">
