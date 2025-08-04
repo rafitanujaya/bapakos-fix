@@ -5,19 +5,25 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.bapakos.manager.ServiceManager;
 import org.bapakos.manager.ViewManager;
+import org.bapakos.model.dto.KostReportDto;
 import org.bapakos.model.entity.BookingEntity;
 import org.bapakos.model.entity.KostEntity;
+import org.bapakos.model.entity.UserEntity;
 import org.bapakos.service.BookingService;
 import org.bapakos.session.Session;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -139,6 +145,26 @@ public class AdminMainController {
 
     public void setContent(Parent node) {
         root.setCenter(node);
+    }
+
+    public void handleReport() throws SQLException {
+        UserEntity user = Session.get();
+        KostReportDto result = serviceManager.getKostService().getReportById(user.getId());
+
+        NumberFormat rupiahFormat = NumberFormat.getCurrencyInstance(new Locale("id", "ID"));
+
+        String maxPrice = rupiahFormat.format(result.getMaxPrice());
+        String minPrice = rupiahFormat.format(result.getMinPrice());
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Laporan Kost");
+        alert.setHeaderText("Hasil Laporan Kost Anda");
+        alert.setContentText(
+                "Total Kost: " + result.getTotalKost() + "\n" +
+                        "Harga Kost Tertinggi: " + maxPrice + "\n" +
+                        "Harga Kost Terendah: " + minPrice
+        );
+        alert.showAndWait();
     }
 
 

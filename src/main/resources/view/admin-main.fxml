@@ -62,6 +62,16 @@
                     </graphic>
                 </Button>
 
+                <Button fx:id="reportBtn" onAction="#handleReport" text="Report" styleClass="menu-button" alignment="CENTER_LEFT" maxWidth="Infinity">
+                    <graphic>
+                        <ImageView fitHeight="18" fitWidth="18">
+                            <image>
+                                <Image url="@/image/transaction-icon.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+
                 <Separator>
                     <padding>
                         <Insets top="10" bottom="10"/>

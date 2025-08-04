@@ -1,5 +1,6 @@
 package org.bapakos.dao;
 
+import org.bapakos.model.dto.KostReportDto;
 import org.bapakos.model.entity.FacilityEntity;
 import org.bapakos.model.entity.KostEntity;
 
@@ -201,6 +202,24 @@ public class KostDaoImpl implements KostDao {
                 kosts.add(kost);
             }
             return kosts;
+        }
+    }
+
+    @Override
+    public KostReportDto getReport(String ownerId) throws SQLException {
+        String query = "SELECT COUNT(*) AS total_kost, MAX(price) AS max_price,MIN(price) AS min_price FROM kosts WHERE owner_id = ?";
+
+        try (PreparedStatement ps = conn.prepareStatement(query)) {
+            ps.setString(1, ownerId);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                KostReportDto kostReportDto = new KostReportDto();
+                kostReportDto.setTotalKost(rs.getInt("total_kost"));
+                kostReportDto.setMaxPrice(rs.getInt("max_price"));
+                kostReportDto.setMinPrice(rs.getInt("min_price"));
+                return kostReportDto;
+            }
+            return null;
         }
     }
 }

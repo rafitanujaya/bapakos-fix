@@ -1,5 +1,6 @@
 package org.bapakos.dao;
 
+import org.bapakos.model.dto.KostReportDto;
 import org.bapakos.model.entity.FacilityEntity;
 import org.bapakos.model.entity.KostEntity;
 
@@ -18,4 +19,5 @@ public interface KostDao {
     public List<KostEntity> findAllByOwnerId(String ownerId) throws SQLException;
     public List<KostEntity> findByOwnerIdAndKeyword(String ownerId, String keyword) throws SQLException;
     public List<KostEntity> findByKeyword(String keyword) throws SQLException;
+    public KostReportDto getReport(String ownerId) throws SQLException;
 }

@@ -2,6 +2,7 @@ package org.bapakos.service;
 
 import org.bapakos.dao.KostDao;
 import org.bapakos.model.dto.CreateKostDto;
+import org.bapakos.model.dto.KostReportDto;
 import org.bapakos.model.dto.Response;
 import org.bapakos.model.entity.KostEntity;
 import org.bapakos.session.Session;
@@ -88,6 +89,11 @@ public class KostServiceImpl implements KostService {
     @Override
     public List<KostEntity> findByKeyword(String keyword) throws SQLException {
         return this.kostDao.findByKeyword(keyword);
+    }
+
+    @Override
+    public KostReportDto getReportById(String id) throws SQLException {
+        return this.kostDao.getReport(id);
     }
 
 

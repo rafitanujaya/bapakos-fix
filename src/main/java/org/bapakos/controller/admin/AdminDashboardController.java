@@ -15,8 +15,10 @@ import javafx.stage.Stage;
 import org.bapakos.manager.ServiceManager;
 import org.bapakos.manager.ViewManager;
 import org.bapakos.controller.admin.AdminCreateKostController;
+import org.bapakos.model.dto.KostReportDto;
 import org.bapakos.model.dto.Response;
 import org.bapakos.model.entity.KostEntity;
+import org.bapakos.model.entity.UserEntity;
 import org.bapakos.service.KostService;
 import org.bapakos.session.Session;
 
