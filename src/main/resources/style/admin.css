@@ -406,27 +406,21 @@
     -fx-border-width: 0 0 1 0;
 }
 
-.approve-button {
-    -fx-background-color: #4CAF50;
-    -fx-text-fill: white;
-}
-
-.reject-button {
-    -fx-background-color: #f44336;
-    -fx-text-fill: white;
-}
 
 .booking-row {
-    -fx-padding: 10;
-    -fx-spacing: 20;
-    -fx-border-color: #D0D0D0;
-    -fx-border-width: 1;
-    -fx-background-color: #F9F9F9;
+    -fx-padding: 12;
+    -fx-spacing: 16;
+    -fx-border-color: white;
+    -fx-border-width: 1 0 1 0; /* top and bottom only */
+    -fx-background-color: white;
     -fx-alignment: CENTER_LEFT;
-    -fx-effect: dropshadow(two-pass-box, rgba(0, 0, 0, 0.05), 4, 0, 0, 2);
-    -fx-border-radius: 6;
-    -fx-background-radius: 6;
+    -fx-cursor: hand;
 }
+
+.booking-row:hover {
+    -fx-background-color: #F0F0F0;
+}
+
 
 .button-approve {
     -fx-background-color: #4CAF50;
