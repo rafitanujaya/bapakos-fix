@@ -10,6 +10,8 @@ import org.bapakos.controller.admin.AdminCreateKostController;
 import org.bapakos.controller.admin.AdminDashboardController;
 import org.bapakos.controller.admin.AdminMainController;
 import org.bapakos.controller.user.UserMainController;
+import org.bapakos.model.entity.BookingEntity;
+import org.bapakos.model.entity.KostEntity;
 import org.bapakos.service.BookingServiceImpl;
 
 import java.io.IOException;
@@ -61,6 +63,10 @@ public class ViewManager {
 
             AdminMainController controller = loader.getController();
             controller.setServiceManager(serviceManager);
+            controller.setBookingService(this.serviceManager.getBookingService());
+            controller.setBookingEntity(new BookingEntity());
+            controller.setKostEntity(new KostEntity());
+
             controller.setViewManager(this);
             controller.initAfterInject();
 

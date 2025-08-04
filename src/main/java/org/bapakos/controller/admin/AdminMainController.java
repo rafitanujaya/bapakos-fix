@@ -11,6 +11,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.bapakos.manager.ServiceManager;
 import org.bapakos.manager.ViewManager;
+import org.bapakos.model.entity.BookingEntity;
+import org.bapakos.model.entity.KostEntity;
+import org.bapakos.service.BookingService;
 import org.bapakos.session.Session;
 
 import java.io.IOException;
@@ -40,12 +43,18 @@ public class AdminMainController {
 
     private ViewManager viewManager;
     private ServiceManager serviceManager;
+    private BookingService bookingService;
+    private BookingEntity bookingEntity;
+    private KostEntity kostEntity;
 
     public void setViewManager(ViewManager viewManager) {
         this.viewManager = viewManager;
     }
     public void setServiceManager(ServiceManager serviceManager) {this.serviceManager = serviceManager;}
     public ServiceManager getServiceManager() {return serviceManager;}
+    public void setBookingService(BookingService bookingService) {this.bookingService = bookingService;}
+    public void setBookingEntity(BookingEntity bookingEntity) { this.bookingEntity = bookingEntity; }
+    public void setKostEntity(KostEntity kostEntity) { this.kostEntity = kostEntity; }
 
     @FXML
     public void initialize() {
@@ -96,6 +105,9 @@ public class AdminMainController {
             } else if (controller instanceof AdminBookingController c) {
                 c.setServiceManager(serviceManager);
                 c.setViewManager(viewManager);
+                c.setBookingService(bookingService);
+                c.setKostEntity(kostEntity);
+                c.setBookingEntity(bookingEntity);
             } else if (controller instanceof AdminEditKostController c) {
                 c.setMainController(this);
                 c.setKostService(serviceManager.getKostService());
