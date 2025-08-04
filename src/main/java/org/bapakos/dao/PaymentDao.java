@@ -8,7 +8,8 @@ import org.bapakos.model.entity.PaymentEntity;
 import java.util.List;
 
 public interface PaymentDao {
-    public Response pay(String id) throws Exception;
+    public boolean pay(String id) throws Exception;
+    public boolean paymentExits(String id) throws Exception;
     public List<FindAllPaymentOwnerKostDto> findAllOwnerKost(String ownerKost) throws Exception;
     public List<FindAllUserPaymentDto> findAllUser(String userId) throws Exception;
 }
