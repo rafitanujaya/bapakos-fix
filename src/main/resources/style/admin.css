@@ -397,3 +397,22 @@
 .button-lihat:hover {
     -fx-background-color: #1976D2;
 }
+
+.kos-table-row {
+    -fx-padding: 10 15;
+    -fx-spacing: 15;
+    -fx-alignment: CENTER_LEFT;
+    -fx-border-color: #dddddd;
+    -fx-border-width: 0 0 1 0;
+}
+
+.approve-button {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+}
+
+.reject-button {
+    -fx-background-color: #f44336;
+    -fx-text-fill: white;
+}
+

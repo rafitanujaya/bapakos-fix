@@ -38,16 +38,12 @@
     <!-- Panel Tabel Transaksi -->
     <VBox styleClass="table-panel" VBox.vgrow="ALWAYS">
 
-        <!-- Header Row untuk Tabel Transaksi -->
-        <HBox styleClass="kos-table-header">
-            <padding>
-                <Insets top="12" right="15" bottom="12" left="15" />
-            </padding>
-            <Label text="No" prefWidth="70" />
-            <Label text="Nama" prefWidth="270" />
-            <Label text="Penyewa" prefWidth="370" HBox.hgrow="ALWAYS" />
-            <Label text="Harga" prefWidth="275" />
-            <Label text="Status" prefWidth="100" />
+        <HBox spacing="15" styleClass="kos-table-header">
+            <Label text="No" prefWidth="70"/>
+            <Label text="Nama Kos" prefWidth="270"/>
+            <Label text="Penyewa" prefWidth="370"/>
+            <Label text="Aksi" prefWidth="275"/>
+            <Label text="Status" prefWidth="100"/>
         </HBox>
 
         <!-- ScrollPane untuk menampung baris data yang dinamis -->

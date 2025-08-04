@@ -101,6 +101,7 @@ public class AdminMainController {
                 c.setViewManager(viewManager);
             } else if (controller instanceof AdminTransactionController c) {
                 c.setServiceManager(serviceManager);
+                c.setBookingService(bookingService);
                 c.setViewManager(viewManager);
             } else if (controller instanceof AdminBookingController c) {
                 c.setServiceManager(serviceManager);
