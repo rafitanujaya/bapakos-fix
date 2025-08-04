@@ -60,11 +60,11 @@ public class AdminBookingController {
                 row.setPrefHeight(40); // opsional: tinggi baris tetap
 
                 Label kosLabel = new Label("Kos: " + booking.getName());
-                kosLabel.setPrefWidth(250);
+                kosLabel.setPrefWidth(260);
                 Label userLabel = new Label("User: " + booking.getUsername());
-                userLabel.setPrefWidth(250);
+                userLabel.setPrefWidth(310);
                 Label statusLabel = new Label("Status: " + booking.getStatus().toString());
-                statusLabel.setPrefWidth(250);
+                statusLabel.setPrefWidth(190);
 
                 row.getChildren().addAll(kosLabel, userLabel, statusLabel);
 
