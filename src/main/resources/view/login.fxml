@@ -16,8 +16,7 @@
       xmlns:fx="http://javafx.com/fxml"
       prefHeight="720.0" prefWidth="1220.0"
       fx:controller="org.bapakos.controller.LoginController"
-      styleClass="container"
->
+      styleClass="container">
     <ImageView fx:id="banner" fitWidth="650" fitHeight="680" styleClass="">
         <clip>
             <Rectangle arcWidth="20" arcHeight="20" width="650" height="680"/>
@@ -26,7 +25,10 @@
     </ImageView>
 
 
-    <VBox styleClass="form" >
+    <VBox styleClass="form"  maxWidth="400" alignment="CENTER">
+        <HBox.margin>
+            <Insets left="32"/>
+        </HBox.margin>
         <VBox alignment="CENTER" spacing="16">
             <ImageView fitHeight="155" fitWidth="155">
                 <Image url="@../image/logo.png"/>

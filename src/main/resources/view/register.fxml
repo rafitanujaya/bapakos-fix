@@ -26,7 +26,10 @@
    </ImageView>
 
 
-   <VBox styleClass="form" >
+   <VBox styleClass="form" maxWidth="400" alignment="CENTER">
+      <HBox.margin>
+         <Insets left="32"/>
+      </HBox.margin>
       <VBox alignment="CENTER" spacing="16">
          <ImageView fitHeight="155" fitWidth="155">
             <Image url="@../image/logo.png"/>
