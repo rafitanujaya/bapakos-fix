@@ -11,6 +11,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.bapakos.manager.ServiceManager;
 import org.bapakos.manager.ViewManager;
+import org.bapakos.session.Session;
 
 import java.io.IOException;
 import java.net.URL;
@@ -95,6 +96,10 @@ public class AdminMainController {
             } else if (controller instanceof AdminBookingController c) {
                 c.setServiceManager(serviceManager);
                 c.setViewManager(viewManager);
+            } else if (controller instanceof AdminEditKostController c) {
+                c.setMainController(this);
+                c.setKostService(serviceManager.getKostService());
+                c.setViewManager(viewManager);
             }
 
             root.setCenter(page);
@@ -117,4 +122,10 @@ public class AdminMainController {
             e.printStackTrace();
         }
     }
+
+    public void setContent(Parent node) {
+        root.setCenter(node);
+    }
+
+
 }

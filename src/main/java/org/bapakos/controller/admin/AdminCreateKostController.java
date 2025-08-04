@@ -8,6 +8,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import org.bapakos.controller.location.Location;
+import org.bapakos.manager.ServiceManager;
 import org.bapakos.manager.ViewManager;
 import org.bapakos.model.dto.CreateKostDto;
 import org.bapakos.model.dto.Response;
@@ -23,40 +24,65 @@ import java.util.List;
 
 public class AdminCreateKostController {
 
-    @FXML private TextField nameField;
-    @FXML private TextField priceField;
-    @FXML private TextArea descriptionField;
-    @FXML private ComboBox<String> provinceComboBox;
-    @FXML private ComboBox<String> cityComboBox;
-    @FXML private TextField codePosField;
-    @FXML private TextArea addressField;
-    @FXML private CheckBox acCheckBox;
-    @FXML private CheckBox kmlCheckBox;
-    @FXML private CheckBox kmdCheckBox;
-    @FXML private CheckBox wifiCheckBox;
+    @FXML
+    private TextField nameField;
+    @FXML
+    private TextField priceField;
+    @FXML
+    private TextArea descriptionField;
+    @FXML
+    private ComboBox<String> provinceComboBox;
+    @FXML
+    private ComboBox<String> cityComboBox;
+    @FXML
+    private TextField codePosField;
+    @FXML
+    private TextArea addressField;
+    @FXML
+    private CheckBox acCheckBox;
+    @FXML
+    private CheckBox kmlCheckBox;
+    @FXML
+    private CheckBox kmdCheckBox;
+    @FXML
+    private CheckBox wifiCheckBox;
 
     private KostService kostService;
     private File selectedImageFile;
     private byte[] imageData;
 
-    @FXML private StackPane dropZoneContainer;
-    @FXML private VBox dropZoneContent;
-    @FXML private ImageView previewImageView;
-    @FXML private Button deleteImageButton;
+    @FXML
+    private StackPane dropZoneContainer;
+    @FXML
+    private VBox dropZoneContent;
+    @FXML
+    private ImageView previewImageView;
+    @FXML
+    private Button deleteImageButton;
+    @FXML
+    private Label facilities;
+    @FXML
+    private Button saveBtn;
 
     // Tambahkan referensi ke MainController
     private AdminMainController mainController;
     private ViewManager viewManager;
-    private KostEntity currentEditingKost;
+    private ServiceManager serviceManager;
 
     public void setMainController(AdminMainController mainController) {
         this.mainController = mainController;
     }
+
     public void setViewManager(ViewManager viewManager) {
         this.viewManager = viewManager;
     }
+
     public void setKostService(KostService kostService) {
         this.kostService = kostService;
+    }
+
+    public void setServiceManager(ServiceManager serviceManager) {
+        this.serviceManager = serviceManager;
     }
 
     @FXML
@@ -162,7 +188,7 @@ public class AdminCreateKostController {
             System.out.println("Description: " + description);
             System.out.println("Address: " + address);
 
-            if(name.isEmpty()) {
+            if (name.isEmpty()) {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Gagal dibuat");
                 alert.setHeaderText(null);
@@ -180,7 +206,7 @@ public class AdminCreateKostController {
                 return;
             }
 
-            if(price < 100000) {
+            if (price < 100000) {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Gagal dibuat");
                 alert.setHeaderText(null);
@@ -240,26 +266,5 @@ public class AdminCreateKostController {
         }
     }
 
-//    public void setEditMode(KostEntity kost) {
-//        this.currentEditingKost = kost;
-//
-//        // Isi field
-//        nameField.setText(kost.getName());
-//
-//        priceField.setText(String.valueOf(kost.getPrice()));
-//        descriptionField.setText(kost.getDescription());
-//
-//        // Jika image BLOB atau path, sesuaikan
-//        this.imageBlob = kost.getImage();
-//
-//        // Jika ada fasilitas, load juga
-//        // fasilitasCheckbox.setSelected(...);
-//
-//        // Ubah tombol jadi "Update"
-//        simpanButton.setText("Update");
-//
-//        // Atur flag internal agar simpanButton akan memanggil update
-//        this.editMode = true;
-//    }
 
 }

@@ -15,7 +15,12 @@
 <?import javafx.scene.layout.VBox?>
 
 <!-- Root diubah menjadi ScrollPane agar konten bisa di-scroll -->
-<ScrollPane fitToWidth="true" styleClass="no-border-scroll-pane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<ScrollPane fitToWidth="true"
+            styleClass="no-border-scroll-pane"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            stylesheets="@/style/detail-popup.css"
+            fx:controller="org.bapakos.controller.user.DetailPopupController">
     <content>
         <VBox fx:id="detailPanel" spacing="15" styleClass="kos-detail-panel">
             <padding>

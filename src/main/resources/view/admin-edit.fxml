@@ -2,39 +2,26 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Pos?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.FlowPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Priority?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.*?>
 
-<!-- Root diubah menjadi ScrollPane agar konten bisa di-scroll -->
 <ScrollPane fitToWidth="true"
             prefHeight="720"
             prefWidth="1220"
             xmlns="http://javafx.com/javafx/21"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="org.bapakos.controller.admin.AdminCreateKostController">
+            fx:controller="org.bapakos.controller.admin.AdminEditKostController">
     <content>
         <VBox fx:id="mainContent" spacing="25">
             <padding>
                 <Insets bottom="15" left="15" right="15" top="15" />
             </padding>
 
-            <!-- Panel Informasi Umum -->
+            <!-- Informasi Umum -->
             <VBox styleClass="form-panel" spacing="15">
-                <padding>
-                    <Insets top="10" right="10" bottom="10" left="10" />
-                </padding>
+                <padding><Insets top="10" right="10" bottom="10" left="10" /></padding>
                 <VBox spacing="5">
                     <Label text="Nama Kos" styleClass="input-label" />
                     <TextField fx:id="nameField" promptText="Contoh: Kos Melati Indah" />
@@ -49,11 +36,9 @@
                 </VBox>
             </VBox>
 
-            <!-- Panel Lokasi & Gambar -->
+            <!-- Lokasi & Gambar -->
             <VBox styleClass="form-panel" spacing="15">
-                <padding>
-                    <Insets top="10" right="10" bottom="10" left="10" />
-                </padding>
+                <padding><Insets top="10" right="10" bottom="10" left="10" /></padding>
                 <Label text="Lokasi &amp; Gambar" styleClass="panel-title" />
                 <HBox spacing="30">
                     <VBox spacing="15" HBox.hgrow="ALWAYS">
@@ -87,27 +72,23 @@
                             </VBox>
                             <ImageView fx:id="previewImageView" fitHeight="200" fitWidth="280" preserveRatio="true" styleClass="image-preview" />
                             <Button fx:id="deleteImageButton" text="✕" styleClass="delete-image-button" visible="false" StackPane.alignment="TOP_RIGHT">
-                                <StackPane.margin>
-                                    <Insets top="5" right="5" />
-                                </StackPane.margin>
+                                <StackPane.margin><Insets top="5" right="5" /></StackPane.margin>
                             </Button>
                         </StackPane>
                     </VBox>
                 </HBox>
             </VBox>
 
-            <!-- Panel Fasilitas BARU -->
+            <!-- Panel Fasilitas (readonly) -->
             <VBox styleClass="form-panel" spacing="15">
-                <padding>
-                    <Insets top="10" right="10" bottom="10" left="10" />
-                </padding>
+                <padding><Insets top="10" right="10" bottom="10" left="10" /></padding>
                 <Label fx:id="facilities" text="Fasilitas" styleClass="panel-title" />
                 <FlowPane fx:id="facilityPane" hgap="30" vgap="15">
                     <children>
-                        <CheckBox fx:id="acCheckBox" text="AC" />
-                        <CheckBox fx:id="kmdCheckBox" text="Kamar Mandi Dalam" />
-                        <CheckBox fx:id="kmlCheckBox" text="Kamar Mandi Luar" />
-                        <CheckBox fx:id="wifiCheckBox" text="Wifi" />
+                        <CheckBox fx:id="acCheckBox" text="AC" disable="true" />
+                        <CheckBox fx:id="kmdCheckBox" text="Kamar Mandi Dalam" disable="true" />
+                        <CheckBox fx:id="kmlCheckBox" text="Kamar Mandi Luar" disable="true" />
+                        <CheckBox fx:id="wifiCheckBox" text="Wifi" disable="true" />
                     </children>
                 </FlowPane>
             </VBox>
@@ -115,7 +96,7 @@
             <!-- Tombol Aksi -->
             <HBox spacing="10" alignment="CENTER_RIGHT">
                 <Button fx:id="cancelBtn" text="Batal" onAction="#handleCancel" styleClass="cancel-button"/>
-                <Button fx:id="saveBtn" onAction="#handleCreate" text="Simpan" styleClass="create-button"/>
+                <Button fx:id="saveBtn"  text="Simpan Perubahan" onAction="#handleSave" styleClass="create-button"/>
             </HBox>
         </VBox>
     </content>

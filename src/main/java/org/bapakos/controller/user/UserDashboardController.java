@@ -21,6 +21,7 @@ import javafx.stage.Stage;
 import org.bapakos.manager.ServiceManager;
 import org.bapakos.manager.ViewManager;
 import org.bapakos.model.entity.KostEntity;
+import org.bapakos.service.BookingServiceImpl;
 import org.bapakos.service.KostService;
 
 import java.io.ByteArrayInputStream;
@@ -37,12 +38,14 @@ public class UserDashboardController {
     private ServiceManager serviceManager;
     private KostService kostService;
     private UserMainController mainController;
+    private BookingServiceImpl bookingService;
 
 
     public void setMainController(UserMainController mainController) { this.mainController = mainController; }
     public void setViewManager(ViewManager viewManager) { this.viewManager = viewManager; }
     public void setServiceManager(ServiceManager serviceManager) { this.serviceManager = serviceManager; }
     public void setKostService(KostService kostService) { this.kostService = kostService; }
+    public void setBookingService(BookingServiceImpl bookingService) { this.bookingService = bookingService; }
 
     @FXML
     public void initialize() {}
@@ -66,7 +69,7 @@ public class UserDashboardController {
                 kosListContainer.getChildren().add(card);
                 card.setOnMouseClicked(event -> {
                     try {
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/detail-panel-popup.fxml"));
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/kos-detail-popup.fxml"));
                         ScrollPane popupContent = loader.load();
 
                         DetailPopupController controller = loader.getController();

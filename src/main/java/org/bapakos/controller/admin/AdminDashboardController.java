@@ -10,12 +10,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.bapakos.manager.ServiceManager;
 import org.bapakos.manager.ViewManager;
 import org.bapakos.controller.admin.AdminCreateKostController;
 import org.bapakos.model.dto.Response;
 import org.bapakos.model.entity.KostEntity;
+import org.bapakos.service.KostService;
 import org.bapakos.session.Session;
 
 import java.io.IOException;
@@ -36,7 +38,7 @@ public class AdminDashboardController {
 
     // Variabel untuk menyimpan referensi ke controller utama
     private AdminMainController mainController;
-    private AdminCreateKostController createKostController;
+    private KostService kostService;
     private ServiceManager serviceManager;
     private ViewManager viewManager;
 
@@ -51,6 +53,9 @@ public class AdminDashboardController {
     }
     public void setServiceManager(ServiceManager serviceManager) {
         this.serviceManager = serviceManager;
+    }
+    public void setKostService(KostService kostService) {
+        this.kostService = kostService;
     }
     // ---------------------------------
 
@@ -128,7 +133,7 @@ public class AdminDashboardController {
                 Button editBtn = new Button("Edit");
                 editBtn.getStyleClass().add("button-edit");
                 editBtn.setPrefWidth(60);
-                editBtn.setOnAction(e -> {handleEdit();});
+                editBtn.setOnAction(e -> { handleEdit(kost.getId()); });
 
                 // Tombol Hapus
                 Button hapusBtn = new Button("Hapus");
@@ -176,10 +181,23 @@ public class AdminDashboardController {
         }
     }
 
-    private void handleEdit() {
+    public void handleEdit(String kostId) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/admin-edit.fxml"));
+            Parent root = loader.load();
 
+            AdminEditKostController controller = loader.getController();
+            controller.setMainController(mainController);
+            controller.setServiceManager(serviceManager);
+            controller.setKostService(serviceManager.getKostService());
+            controller.setViewManager(viewManager); // this = viewManager
+            controller.setKostId(kostId);
+
+            mainController.setContent(root); // misalnya ini menaruh konten ke panel utama
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-
-
 }
+

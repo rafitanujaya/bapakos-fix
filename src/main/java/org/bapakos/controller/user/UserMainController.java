@@ -86,6 +86,10 @@ public class UserMainController {
                  c.initAfterInject(serviceManager);
 
                  this.userDashboardController = c;
+             } else if (loadedController instanceof DetailPopupController c) {
+                 c.setBookingService(bookingService);
+                 c.setViewManager(viewManager);
+                 c.setServiceManager(serviceManager);
              }
 
             rootPane.setCenter(page);
@@ -146,4 +150,6 @@ public class UserMainController {
     private void onRefreshButtonClick() {
         userDashboardController.loadPage();
     }
+
+
 }

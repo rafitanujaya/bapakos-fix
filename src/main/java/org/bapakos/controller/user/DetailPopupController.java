@@ -2,6 +2,7 @@ package org.bapakos.controller.user;
 
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -9,7 +10,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import org.bapakos.model.dto.Response;
 import org.bapakos.model.entity.KostEntity;
+import org.bapakos.model.entity.UserEntity;
+import org.bapakos.service.BookingServiceImpl;
+import org.bapakos.session.Session;
 
 public class DetailPopupController {
 
@@ -23,7 +29,13 @@ public class DetailPopupController {
     @FXML private ImageView mapImageView;
     @FXML private Button orderButton;
 
+    private BookingServiceImpl bookingService;
     private KostEntity kos;
+
+    public void setBookingService(BookingServiceImpl bookingService) {
+        this.bookingService = bookingService;
+    }
+
 
     public void setKos(KostEntity kos) {
         this.kos = kos;
@@ -33,18 +45,72 @@ public class DetailPopupController {
         alamatLabel.setText(kos.getLocation());
         deskripsiLabel.setText(kos.getDescription());
 
+        // Gambar utama
         if (kos.getImage() != null) {
             Image image = new Image(new java.io.ByteArrayInputStream(kos.getImage()));
             mainImageView.setImage(image);
+
+            // Thumbnail sebagai contoh duplikat gambar utama (kalau belum ada list image lain)
+            thumbnailsBox.getChildren().clear();
+            for (int i = 0; i < 3; i++) {
+                ImageView thumb = new ImageView(image);
+                thumb.setFitWidth(60);
+                thumb.setFitHeight(60);
+                thumb.setPreserveRatio(true);
+                int finalI = i;
+                thumb.setOnMouseClicked(e -> mainImageView.setImage(thumb.getImage()));
+                thumbnailsBox.getChildren().add(thumb);
+            }
         }
 
-        // Jika ada fasilitas-fasilitas, bisa ditambahkan di sini
-        // fasilitasFlowPane.getChildren().add(new Label("WiFi")); dll
+//        // Contoh fasilitas dummy
+//        fasilitasFlowPane.getChildren().clear();
+//        if (kos.getFacilities() != null) {
+//            for (String fasilitas : kos.getFacilities()) {
+//                Label label = new Label(fasilitas);
+//                label.getStyleClass().add("kos-detail-fasilitas");
+//                fasilitasFlowPane.getChildren().add(label);
+//            }
+//        }
 
         // Order Button
         orderButton.setOnAction(e -> {
             System.out.println("Order kos: " + kos.getName());
-            // Tambahkan logika order di sini
+            handleOrderNow();
         });
     }
+
+    public void handleOrderNow() {
+        try {
+            if (bookingService == null || kos.getId() == null || Session.get() == null) {
+                showAlert(Alert.AlertType.ERROR, "Kesalahan", null, "Data booking tidak lengkap.");
+                return;
+            }
+
+            Response response = bookingService.create(kos.getId(), Session.get().getId());
+
+            if (response.isSuccess()) {
+                showAlert(Alert.AlertType.INFORMATION, "Sukses", null, "Booking berhasil dibuat.");
+                // Tutup popup jika mau
+                Stage stage = (Stage) orderButton.getScene().getWindow();
+                stage.close();
+            } else {
+                showAlert(Alert.AlertType.WARNING, "Gagal", null, response.getMessage());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Kesalahan", null, "Terjadi kesalahan saat booking.");
+        }
+    }
+
+
+    private void showAlert(Alert.AlertType type, String title, String header, String content) {
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
+
+
 }

@@ -112,5 +112,25 @@ public class ViewManager {
         }
     }
 
+    public void adminEditScene () throws IOException {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/admin-edit.fxml"));
+            Parent root = loader.load();
+
+            AdminDashboardController controller = loader.getController();
+            controller.setServiceManager(serviceManager);
+            controller.setViewManager(this);
+
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource("/style/admin.css").toExternalForm());
+
+            primaryStage.setScene(scene);
+            primaryStage.setTitle("Admin");
+            primaryStage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
 
 }
