@@ -19,12 +19,10 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class AdminBookingController {
+
     private ViewManager viewManager;
     private ServiceManager serviceManager;
-    private BookingEntity bookingEntity;
-    private KostEntity kostEntity;
     private BookingService bookingService;
-
 
     @FXML
     private VBox bookingListVBox;
@@ -32,15 +30,11 @@ public class AdminBookingController {
     public void setViewManager(ViewManager viewManager) {
         this.viewManager = viewManager;
     }
+
     public void setServiceManager(ServiceManager serviceManager) {
         this.serviceManager = serviceManager;
     }
-    public void setBookingEntity(BookingEntity bookingEntity) {
-        this.bookingEntity = bookingEntity;
-    }
-    public void setKostEntity(KostEntity kostEntity) {
-        this.kostEntity = kostEntity;
-    }
+
     public void setBookingService(BookingService bookingService) {
         this.bookingService = bookingService;
     }
@@ -52,6 +46,7 @@ public class AdminBookingController {
 
             for (FindBookingByOwnerDto booking : bookings) {
                 VBox row = new VBox(5);
+
                 Label kosLabel = new Label("Kos: " + booking.getName());
                 Label userLabel = new Label("User: " + booking.getUsername());
                 Label statusLabel = new Label("Status: " + booking.getStatus().toString());
@@ -63,13 +58,14 @@ public class AdminBookingController {
                     Button rejectButton = new Button("Reject");
 
                     approveButton.setOnAction(e -> handleStatusUpdate(
-                            bookingEntity.getId(),
-                            bookingEntity.getKostId(),
+                            booking.getId(),
+                            booking.getKostId(),
                             BookingEntity.Status.approve
                     ));
+
                     rejectButton.setOnAction(e -> handleStatusUpdate(
-                            bookingEntity.getId(),
-                            bookingEntity.getKostId(),
+                            booking.getId(),
+                            booking.getKostId(),
                             BookingEntity.Status.reject
                     ));
 
@@ -83,12 +79,13 @@ public class AdminBookingController {
 
         } catch (SQLException e) {
             e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Error", null, "Gagal memuat data booking.");
         }
     }
 
-    private void handleStatusUpdate(String bookingId, String kostId, BookingEntity.Status newStatus) {
+    private void handleStatusUpdate(String bookingId, String kostId ,BookingEntity.Status status) {
         try {
-            Response response = bookingService.update(bookingId, kostId, newStatus);
+            Response response = bookingService.update(bookingId, kostId, status);
             if (response.isSuccess()) {
                 loadBookingsForOwner(Session.get().getId()); // reload ulang data
             } else {
@@ -108,5 +105,9 @@ public class AdminBookingController {
         alert.showAndWait();
     }
 
+    public void setKostEntity(KostEntity kostEntity) {
+    }
 
+    public void setBookingEntity(BookingEntity bookingEntity) {
+    }
 }

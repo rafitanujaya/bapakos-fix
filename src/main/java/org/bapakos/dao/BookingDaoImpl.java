@@ -58,7 +58,7 @@ public class BookingDaoImpl implements BookingDao {
 
     @Override
     public List<FindBookingByOwnerDto> findAllByOwnerKost(String ownerId) throws SQLException {
-        String query = "SELECT b.id, b.status, k.name AS kost_name, u.username AS user_name FROM bookings b JOIN kosts k ON b.kost_id = k.id JOIN users u ON b.user_id = u.id WHERE k.owner_id = ? ORDER BY b.created_at DESC";
+        String query = "SELECT b.id, b.kost_id, b.status, k.name AS kost_name, u.username AS user_name FROM bookings b JOIN kosts k ON b.kost_id = k.id JOIN users u ON b.user_id = u.id WHERE k.owner_id = ? ORDER BY b.created_at DESC";
 
         try (PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setString(1, ownerId);
@@ -67,6 +67,7 @@ public class BookingDaoImpl implements BookingDao {
                 while (rs.next()) {
                     FindBookingByOwnerDto booking = new FindBookingByOwnerDto();
                     booking.setId(rs.getString("id"));
+                    booking.setKostId(rs.getString("kost_id"));
                     booking.setName(rs.getString("kost_name"));
                     booking.setUsername(rs.getString("user_name"));
                     booking.setStatus(FindBookingByOwnerDto.Status.valueOf(rs.getString("status")));

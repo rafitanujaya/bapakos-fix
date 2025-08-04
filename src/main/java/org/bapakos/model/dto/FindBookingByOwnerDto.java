@@ -2,6 +2,7 @@ package org.bapakos.model.dto;
 
 public class FindBookingByOwnerDto {
     private String id;
+    private String kostId;
     private String name;
     private String username;
     private Status status;
@@ -36,6 +37,14 @@ public class FindBookingByOwnerDto {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public String getKostId() {
+        return kostId;
+    }
+
+    public void setKostId(String kostId) {
+        this.kostId = kostId;
     }
 
     public enum Status {
