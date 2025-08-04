@@ -115,6 +115,7 @@ public class AdminMainController {
                 c.setBookingService(bookingService);
                 c.setKostEntity(kostEntity);
                 c.setBookingEntity(bookingEntity);
+                c.initAfterInject();
             } else if (controller instanceof AdminEditKostController c) {
                 c.setMainController(this);
                 c.setKostService(serviceManager.getKostService());

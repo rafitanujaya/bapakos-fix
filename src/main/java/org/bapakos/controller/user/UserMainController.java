@@ -6,9 +6,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import org.bapakos.controller.location.Location;
 import org.bapakos.manager.ServiceManager;
 import org.bapakos.manager.ViewManager; // Pastikan import ini benar
 import org.bapakos.model.entity.KostEntity;
@@ -24,7 +26,10 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class UserMainController {
-
+    @FXML
+    private ComboBox<String>provinceComboBox;
+    @FXML
+    private ComboBox<String>cityComboBox;
     @FXML
     private BorderPane rootPane;
     @FXML
@@ -57,6 +62,7 @@ public class UserMainController {
         // Atur aksi untuk tombol-tombol utama
         homeButton.setOnAction(event -> loadPage("user-dashboard.fxml"));
         logoutButton.setOnAction(event -> handleLogout());
+        setupLocationComboBoxes();
     }
 
     public void initAfterInject() {
@@ -156,5 +162,21 @@ public class UserMainController {
         userDashboardController.loadPage();
     }
 
+    private void setupLocationComboBoxes() {
+        provinceComboBox.setItems(Location.getProvinsiJawa());
+        cityComboBox.setDisable(true);
 
+        provinceComboBox.getSelectionModel().selectedItemProperty().addListener((options, oldValue, newValue) -> {
+            if (newValue == null) {
+                cityComboBox.setDisable(true);
+                cityComboBox.getItems().clear();
+                cityComboBox.setPromptText("Pilih Kota/Kabupaten");
+            } else {
+                cityComboBox.setDisable(false);
+                cityComboBox.setItems(Location.getKabupatenPerProvinsi().get(newValue));
+                cityComboBox.getSelectionModel().clearSelection();
+                cityComboBox.setPromptText("Pilih Kota/Kabupaten");
+            }
+        });
+    }
 }

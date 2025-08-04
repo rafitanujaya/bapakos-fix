@@ -25,7 +25,13 @@ public class AdminBookingController {
     private BookingService bookingService;
 
     @FXML
-    private VBox bookingListVBox;
+    private VBox rowsContainer;
+
+    @FXML
+    public void initialize() {
+
+    }
+
 
     public void setViewManager(ViewManager viewManager) {
         this.viewManager = viewManager;
@@ -39,19 +45,28 @@ public class AdminBookingController {
         this.bookingService = bookingService;
     }
 
+    public void initAfterInject() {
+        loadBookingsForOwner(Session.get().getId());
+    }
+
     public void loadBookingsForOwner(String ownerId) {
         try {
             List<FindBookingByOwnerDto> bookings = bookingService.findAllByOwnerKost(ownerId);
-            bookingListVBox.getChildren().clear();
+            rowsContainer.getChildren().clear();
 
             for (FindBookingByOwnerDto booking : bookings) {
-                VBox row = new VBox(5);
+                HBox row = new HBox(20); // elemen dalam satu baris horizontal
+                row.getStyleClass().add("booking-row");
+                row.setPrefHeight(40); // opsional: tinggi baris tetap
 
                 Label kosLabel = new Label("Kos: " + booking.getName());
+                kosLabel.setPrefWidth(250);
                 Label userLabel = new Label("User: " + booking.getUsername());
+                userLabel.setPrefWidth(250);
                 Label statusLabel = new Label("Status: " + booking.getStatus().toString());
+                statusLabel.setPrefWidth(250);
 
-                HBox buttonBox = new HBox(10);
+                row.getChildren().addAll(kosLabel, userLabel, statusLabel);
 
                 if (booking.getStatus() == FindBookingByOwnerDto.Status.pending) {
                     Button approveButton = new Button("Approve");
@@ -68,13 +83,14 @@ public class AdminBookingController {
                             booking.getKostId(),
                             BookingEntity.Status.reject
                     ));
+                    approveButton.getStyleClass().add("button-approve");
+                    rejectButton.getStyleClass().add("button-reject");
 
-                    buttonBox.getChildren().addAll(approveButton, rejectButton);
+
+                    row.getChildren().addAll(approveButton, rejectButton);
                 }
 
-                row.getChildren().addAll(kosLabel, userLabel, statusLabel, buttonBox);
-                row.setStyle("-fx-padding: 10; -fx-border-color: gray; -fx-border-width: 1;");
-                bookingListVBox.getChildren().add(row);
+                rowsContainer.getChildren().add(row);
             }
 
         } catch (SQLException e) {

@@ -94,8 +94,8 @@
             <Label text="Filter Pencarian" styleClass="filter-title" />
             <VBox spacing="5">
                 <Label text="Lokasi" styleClass="filter-label" />
-                <ComboBox fx:id="provinsiComboBox" promptText="Pilih Provinsi" maxWidth="1.7976931348623157E308" />
-                <ComboBox fx:id="kotaComboBox" promptText="Pilih Kota/Kabupaten" maxWidth="1.7976931348623157E308" />
+                <ComboBox fx:id="provinceComboBox" promptText="Pilih Provinsi" maxWidth="1.7976931348623157E308" />
+                <ComboBox fx:id="cityComboBox" promptText="Pilih Kota/Kabupaten" maxWidth="1.7976931348623157E308" />
             </VBox>
             <VBox spacing="5">
                 <Label text="Rentang Harga" styleClass="filter-label" />

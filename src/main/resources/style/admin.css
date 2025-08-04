@@ -416,3 +416,27 @@
     -fx-text-fill: white;
 }
 
+.booking-row {
+    -fx-padding: 10;
+    -fx-spacing: 20;
+    -fx-border-color: #D0D0D0;
+    -fx-border-width: 1;
+    -fx-background-color: #F9F9F9;
+    -fx-alignment: CENTER_LEFT;
+    -fx-effect: dropshadow(two-pass-box, rgba(0, 0, 0, 0.05), 4, 0, 0, 2);
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+}
+
+.button-approve {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-background-radius: 4;
+}
+
+.button-reject {
+    -fx-background-color: #F44336;
+    -fx-text-fill: white;
+    -fx-background-radius: 4;
+}
+
